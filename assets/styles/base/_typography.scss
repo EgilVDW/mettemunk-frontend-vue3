@@ -1,0 +1,165 @@
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	@include font-primary-bold;
+
+	color: $color-black-night-rider;
+
+	&--light {
+		color: $color-brown-bridal-health;
+	}
+}
+
+h1,
+.h1 {
+	font-size: clamp(4rem, px-to-vw(64), 6.4rem);
+	letter-spacing: clamp(0.031rem, px-to-vw(0.05), 0.05rem);
+	line-height: clamp(4.4rem, px-to-vw(72), 7.2rem);
+}
+
+h2,
+.h2 {
+	font-size: clamp(3.2rem, px-to-vw(45), 4.5rem);
+	letter-spacing: clamp(0.03rem, px-to-vw(0.042), 0.042rem);
+	line-height: clamp(3.2rem, px-to-vw(50), 5rem);
+}
+
+h3,
+.h3 {
+	font-size: clamp(2.2rem, px-to-vw(32), 3.2rem);
+	letter-spacing: clamp(0.024rem, px-to-vw(0.036), 0.036rem);
+	line-height: clamp(3rem, px-to-vw(36), 3.6rem);
+}
+
+h4,
+.h4 {
+	font-size: clamp(1.6rem, px-to-vw(22), 2.2rem);
+	letter-spacing: clamp(0.022rem, px-to-vw(0.03), 0.03rem);
+	line-height: clamp(2.4rem, px-to-vw(26), 2.6rem);
+}
+
+h5,
+.h5 {
+	font-size: clamp(1.4rem, px-to-vw(16), 1.6rem);
+	letter-spacing: clamp(0.019rem, px-to-vw(0.022), 0.022rem);
+	line-height: clamp(1.8rem, px-to-vw(20), 2rem);
+	margin: 0;
+	margin-bottom: spacing(component, m);
+}
+
+.text-default {
+	@include font-primary;
+	font-size: clamp(1.4rem, px-to-vw(16), 1.6rem);
+	line-height: clamp(2.4rem, px-to-vw(26), 2.6rem);
+	color: $color-black-night-rider;
+
+	&--light {
+		color: $color-brown-bridal-health;
+	}
+}
+
+.text-small {
+	@include font-primary;
+
+	font-size: clamp(1.2rem, px-to-vw(14), 1.4rem);
+	color: $color-black-night-rider;
+	line-height: 2.2rem;
+
+	&--light {
+		color: $color-brown-bridal-health;
+	}
+}
+
+.text-info {
+	@include font-primary;
+
+	color: $color-black-night-rider;
+	font-size: 1rem;
+
+	&--light {
+		color: $color-brown-bridal-health;
+	}
+}
+
+.text-link {
+	@include font-primary;
+
+	font-size: clamp(1.4rem, px-to-vw(16), 1.6rem);
+	color: $color-brown-bridal-health;
+
+	&:hover {
+		color: $color-red-punch;
+	}
+}
+
+.text-teaser {
+	@include font-secondary-bold;
+
+	letter-spacing: clamp(0.019rem, px-to-vw(0.19), 0.3rem);
+	font-size: clamp(1.4rem, px-to-vw(22), 2.2rem);
+	line-height: clamp(2rem, px-to-vw(25), 2.5rem);
+	color: $color-black-dark-jungle;
+
+	&--light {
+		color: $color-brown-bridal-health;
+	}
+
+	&--italic {
+		font-style: italic;
+		line-height: clamp(2rem, px-to-vw(40), 4rem);
+	}
+}
+
+.text-highlighted {
+	@include font-primary-black;
+
+	font-size: clamp(1rem, px-to-vw(12), 1.2rem);
+	line-height: 1.8rem;
+	letter-spacing: .233rem;
+	color: $color-black-dark-jungle;
+
+	&--light {
+		color: $color-brown-bridal-health;
+	}
+}
+
+.text-cta {
+	@include font-primary;
+
+	font-size: clamp(1rem, px-to-vw(12), 1.2rem);
+	line-height: 1.8rem;
+	letter-spacing: 0.233rem;
+	color: $color-black-dark-jungle;
+
+	&--light {
+		color: $color-brown-bridal-health;
+	}
+}
+
+.text-info-default {
+	@include font-primary;
+
+	font-size: 1rem;
+	color: $color-black-dark-jungle;
+
+	&--light {
+		color: $color-brown-bridal-health;
+	}
+}
+
+.text-info-error {
+	@include font-primary;
+
+	font-size: 1rem;
+	line-height: clamp(1.8rem, px-to-vw(15), 1.5rem);
+	color: $color-brown-caramel;
+}

@@ -1,0 +1,231 @@
+@use "sass:map";
+@import "../tools/_helping-functions.scss";
+
+$s-spacing: (
+	component: (
+		reset: (
+			default: 0rem,
+			mobile: 0rem,
+		),
+		auto: (
+			default: auto,
+			mobile: auto,
+		),
+		s: (
+			default: 0.8rem,
+			mobile: 0.8rem,
+		),
+		sm: (
+			default: 1rem,
+			mobile: 1rem,
+		),
+		m: (
+			default: 1.2rem,
+			mobile: 1.2rem,
+		),
+		ml: (
+			default: 1.6rem,
+			mobile: 2rem,
+		),
+		l: (
+			default: 2rem,
+			mobile: 2rem,
+		),
+		xl: (
+			default: 4rem,
+			mobile: 2rem,
+		),
+	),
+	layout: (
+		reset: (
+			default: 0rem,
+			mobile: 0rem,
+		),
+		auto: (
+			default: auto,
+			mobile: auto,
+		),
+		s: (
+			default: 4rem,
+			mobile: 2rem,
+		),
+		m: (
+			default: 6rem,
+			mobile: 3rem,
+		),
+		l: (
+			default: 8rem,
+			mobile: 4rem,
+		),
+		xl: (
+			default: 10rem,
+			mobile: 5rem,
+		),
+		xxl: (
+			default: 12rem,
+			mobile: 6rem,
+		),
+	),
+);
+
+// Returns the default value defined in the spacing object
+@function spacing($area-value, $size, $viewport: default) {
+	@if type-of($s-spacing) == map {
+		$area: map.get($s-spacing, $area-value);
+		$item: map.get($area, $size);
+		@if type-of($item) == map {
+			@return map.get($item, $viewport);
+		}
+	}
+	@return "";
+}
+
+// Syntax .l-mb-xl === layout + space + size (x: vertical og y:horizontal)
+$layout: map.get($s-spacing, layout);
+$component: map.get($s-spacing, component);
+
+@each $name, $values in $component {
+	$value: 0;
+	$mobile: 0;
+	$default: map.get($values, default);
+	$viewport: auto;
+
+	@if $default != "auto" {
+		$viewport: rem-to-vw($default);
+	}
+
+	@if $default == "auto" {
+		$value: auto;
+	} @else if $default > 0 {
+		$desktop: map.get($values, default);
+		$mobile: map.get($values, mobile);
+
+		$value: clamp($mobile, $viewport, $default);
+	}
+
+	.c-m-#{$name} {
+		margin: $value;
+	}
+	.c-mx-#{$name} {
+		margin-right: $value;
+		margin-left: $value;
+	}
+	.c-my-#{$name} {
+		margin-top: $value;
+		margin-bottom: $value;
+	}
+	.c-ml-#{$name} {
+		margin-left: $value;
+	}
+	.c-mr-#{$name} {
+		margin-right: $value;
+	}
+	.c-mb-#{$name} {
+		margin-bottom: $value;
+	}
+	.c-mt-#{$name} {
+		margin-top: $value;
+	}
+
+	// Padding
+	.c-p-#{$name} {
+		padding: $value;
+	}
+	.c-px-#{$name} {
+		padding-right: $value;
+		padding-left: $value;
+	}
+	.c-py-#{$name} {
+		padding-top: $value;
+		padding-bottom: $value;
+	}
+	.c-pl-#{$name} {
+		padding-left: $value;
+	}
+	.c-pr-#{$name} {
+		padding-right: $value;
+	}
+	.c-pb-#{$name} {
+		padding-bottom: $value;
+	}
+	.c-pt-#{$name} {
+		padding-top: $value;
+	}
+}
+
+@each $name, $values in $layout {
+	$value: 0;
+	$mobile: 0;
+	$default: map.get($values, default);
+	$viewport: auto;
+
+	@if $default != "auto" {
+		$viewport: rem-to-vw($default);
+	}
+
+	@if $default == "auto" {
+		$value: auto;
+	} @else if $default > 0 {
+		$desktop: map.get($values, default);
+		$mobile: map.get($values, mobile);
+
+		$value: clamp($mobile, $viewport, $default);
+	}
+
+	.l-m-#{$name} {
+		margin: $value;
+	}
+	.l-mx-#{$name} {
+		margin-right: $value;
+		margin-left: $value;
+	}
+	.l-my-#{$name} {
+		margin-top: $value;
+		margin-bottom: $value;
+	}
+	.l-ml-#{$name} {
+		margin-left: $value;
+	}
+	.l-mr-#{$name} {
+		margin-right: $value;
+	}
+	.l-mb-#{$name} {
+		margin-bottom: $value;
+	}
+	.l-mt-#{$name} {
+		margin-top: $value;
+	}
+
+	// Padding
+	.l-p-#{$name} {
+		padding: $value;
+	}
+	.l-px-#{$name} {
+		padding-right: $value;
+		padding-left: $value;
+	}
+	.l-py-#{$name} {
+		padding-top: $value;
+		padding-bottom: $value;
+	}
+	.l-pl-#{$name} {
+		padding-left: $value;
+	}
+	.l-pr-#{$name} {
+		padding-right: $value;
+	}
+	.l-pb-#{$name} {
+		padding-bottom: $value;
+	}
+	.l-pt-#{$name} {
+		padding-top: $value;
+	}
+}
+
+@each $name, $values in $component {
+	$default: map.get($values, default);
+
+	.flex-gap-#{$name} {
+		gap: $default;
+	}
+}

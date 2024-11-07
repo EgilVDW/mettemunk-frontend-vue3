@@ -1,0 +1,25 @@
+// main grid wrap
+.main-grid {
+	@include grid;
+}
+
+.main-grid {
+	.row {
+		margin-right: -$gutter-default;
+		margin-left: -$gutter-default;
+	}
+
+	*[class*="col"] {
+		padding-right: $gutter-default;
+		padding-left: $gutter-default;
+	}
+}
+
+@include viewport-custom-max(1536px) {
+	// main grid wrap
+	.main-grid {
+		@include grid-1440;
+	}
+}
+
+

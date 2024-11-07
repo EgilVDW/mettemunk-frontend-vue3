@@ -1,0 +1,14 @@
+@use "sass:math";
+
+@function strip-unit($value) {
+	@return math.div($value, ($value * 0 + 1));
+}
+
+@function px-to-vw($size) {
+	@return #{math.div(100 * strip-unit($size), 1440)}vw;
+}
+
+
+@function rem-to-vw($size) {
+	@return #{10 * math.div(100 * strip-unit($size), 1440)}vw;
+}

@@ -1,0 +1,93 @@
+.flex {
+	display: flex;
+}
+
+[class*="flex-"] {
+	display: flex;
+}
+
+.flex-end {
+	justify-content: flex-end;
+}
+
+.flex-end--desktop {
+	justify-content: flex-end;
+}
+
+.flex-start {
+	justify-content: flex-start;
+}
+
+.flex-space-between {
+	justify-content: space-between;
+}
+
+.flex-center-center {
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-bottom {
+	align-items: flex-end;
+}
+
+.flex-vertical-center {
+	align-items: center;
+}
+
+.flex-vertical-end {
+	align-items: flex-end;
+}
+
+.flex-vertical-direction {
+	flex-direction: column;
+}
+
+.flex-horizontal-center {
+	justify-content: center;
+}
+
+.reset-ul {
+	list-style: none;
+	padding-left: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.row-ul {
+	list-style-type: none;
+	padding-left: 0;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+// important overwrites boostrap
+.half-col {
+	padding-left: clamp(2rem, px-to-vw(60), 6rem) !important;
+}
+
+.full-height {
+	height: 100%;
+}
+
+.visible-devices {
+	display: none;
+}
+
+@include viewport-large {
+	.visible-devices {
+		display: block;
+	}
+
+	.flex-end--desktop {
+		justify-content: unset;
+	}
+
+	.half-col {
+		padding-left: 2rem !important;
+	}
+}

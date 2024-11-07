@@ -1,0 +1,55 @@
+// basic colors
+$color-black: #000;
+$color-white: #fff;
+
+// brown
+$color-brown-camel: #c09c71;
+$color-brown-caramel: #fecf96;
+$color-brown-shadow: #866d4f;
+$color-brown-tequila: #ffe7cb;
+$color-brown-dawn-pink: #f2ebe3;
+$color-brown-bridal-health: #fffaf5;
+
+//black
+$color-black-night-rider: #0a0a0a;
+$color-black-mine-shaft: #343434;
+$color-black-dark-jungle: #1d1d1d;
+
+// red
+$color-red-punch: #cf3224;
+
+// white
+$color-white-rose: #f9f5f1;
+
+// layout - grid
+$grid-max-width: 1320px;
+$grid-max-content-width: 1620px;
+$grid-min-width: 370px;
+
+// layout - grid
+$grid-max-width: 1320px;
+$grid-max-width-full-hd: 1620px;
+$grid-min-width: 350px;
+
+// layout - gutter
+$gutter-full-hd: 2rem;
+$gutter-default: 2rem;
+$gutter-mobile: 2rem;
+
+// screen width
+$default-screen-width: 1440px;
+
+// transitions
+$transition--cubic: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$transition: 0.5s $transition--cubic;
+$transition--slow: 0.9s $transition--cubic;
+$transition--fast: 0.4s $transition--cubic;
+$transition--extra-fast: 0.6s $transition--cubic;
+
+//------- Media queries -------//
+$viewport-extra-small: 350px; // 350px
+$viewport-small: 576px; // 576px
+$viewport-medium: 992px; // 992px
+$viewport-large: 1025px; // 1025px
+$viewport-extra-large: 1440px; // 1200px
+$viewport-max: 1920px; // 1920px

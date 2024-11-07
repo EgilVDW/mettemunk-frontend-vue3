@@ -1,0 +1,50 @@
+.app-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	width: 100vw;
+	height: 100vh;
+	background-color: $color-black-night-rider;
+	pointer-events: none;
+
+	&__logo {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	&__logo svg {
+		width: clamp(15rem, 21vw, 30rem);
+		height: clamp(4rem, 5.5vw, 8rem);
+		opacity: 0;
+		animation: fadeInOut 2.1s;
+		animation-delay: 0s;
+	}
+
+	
+	&__logo rect {
+		stroke-dasharray: 515;
+		stroke-dashoffset: 515;
+		animation: dash .9s linear forwards;
+		animation-delay: .5s;
+	}
+	
+}
+
+@keyframes fadeInOut {
+	0% {opacity:0;}
+	10% {opacity:1;}
+	90% {opacity:0.99;}
+	100% {opacity:0;}
+}
+
+@keyframes dash {
+	from {
+		stroke-dashoffset: 515;
+	}
+	to {
+		stroke-dashoffset: 1030;
+	}
+}

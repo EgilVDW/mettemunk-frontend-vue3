@@ -1,0 +1,163 @@
+@use "sass:math";
+@mixin setGridSize($contentWidthSize, $gutterSize) {
+	max-width: calc($contentWidthSize + 2 * $gutterSize);
+	min-width: $grid-min-width;
+	margin: 0 auto;
+	width: 100%;
+	padding-left: $gutterSize;
+	padding-right: $gutterSize;
+}
+
+// layout - full hd
+@mixin grid {
+	@include setGridSize($grid-max-width-full-hd, $gutter-full-hd);
+}
+
+// layout - 1440
+@mixin grid-1440 {
+	@include setGridSize($grid-max-width, $gutter-default);
+}
+
+// layout - mobile
+@mixin grid-mobile {
+	@include setGridSize($grid-max-width, $gutter-mobile);
+}
+
+
+@mixin position-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+@mixin position-center-y {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+@mixin position-center-x {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+//-------- Media queries -------//
+// estra small phones
+@mixin viewport-extra-small {
+	// max-width: 350px
+	@media only screen and (max-width: $viewport-extra-small) {
+		@content;
+	}
+}
+
+// phones
+@mixin viewport-small {
+	// max-width: 576
+	@media only screen and (max-width: $viewport-small) {
+		@content;
+	}
+}
+
+//bootstraps breaking point for tablet
+@mixin viewport-tablet {
+	@media only screen and (max-width: 768px) {
+		@content;
+	}
+}
+
+// tablet vertical down to phone
+@mixin viewport-medium {
+	// max-width: 992
+	@media only screen and (max-width: $viewport-medium) {
+		@content;
+	}
+}
+
+// tablet horizontal and down to phone
+@mixin viewport-large {
+	// max-width: 1025
+	@media only screen and (max-width: $viewport-large) {
+		@content;
+	}
+}
+
+// desktop
+@mixin viewport-extra-large {
+	// max-width: 1440
+	@media only screen and (max-width: $viewport-extra-large) {
+		@content;
+	}
+}
+
+// xl screens
+@mixin viewport-max {
+	// min-width: 1920px
+	@media only screen and (min-width: $viewport-max) {
+		@content;
+	}
+}
+// custom viewport - max
+@mixin viewport-custom-max($viewport-size) {
+	@media only screen and (max-width: $viewport-size) {
+		@content;
+	}
+}
+// custom viewport - min
+@mixin viewport-custom-min($viewport-size) {
+	@media only screen and (min-width: $viewport-size) {
+		@content;
+	}
+}
+// only mouse interactions
+@mixin viewport-mouse {
+	@media (hover: hover) and (pointer: fine) {
+		@content;
+	}
+}
+
+@mixin viewport-device {
+	@media (hover: none) {
+		@content;
+	}
+}
+// Bootsrap row mixins
+@mixin row {
+	--bs-gutter-x: 2rem;
+	--bs-gutter-y: 0;
+
+	display: flex;
+	margin-top: calc(var(--bs-gutter-y) * -1);
+	margin-right: calc(var(--bs-gutter-x) * -0.5);
+	margin-left: calc(var(--bs-gutter-x) * -0.5);
+	flex-wrap: wrap;
+}
+// Bootsrap col mixins
+@mixin flex {
+	max-width: 100%;
+	margin-top: var(--bs-gutter-y);
+	padding-right: calc(var(--bs-gutter-x) * 0.5);
+	padding-left: calc(var(--bs-gutter-x) * 0.5);
+	flex: 0 0 auto;
+}
+
+@mixin col-3 {
+	width: 25%;
+	@include flex;
+}
+
+@mixin col-4 {
+	width: 33.33333333%;
+	@include flex;
+}
+
+@mixin col-6 {
+	width: 50%;
+	@include flex;
+}
+
+@mixin col-9 {
+	width: 75%;
+	@include flex;
+}

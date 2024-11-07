@@ -1,0 +1,24 @@
+@mixin font-primary {
+	font-family: "Heebo", sans-serif;
+	font-weight: 400;
+}
+
+@mixin font-primary-medium {
+	font-family: "Heebo", sans-serif;
+	font-weight: 500;
+}
+
+@mixin font-primary-bold {
+	font-family: "Heebo", sans-serif;
+	font-weight: 700;
+}
+
+@mixin font-primary-black {
+	font-family: "Heebo", sans-serif;
+	font-weight: 900;
+}
+
+@mixin font-secondary-bold {
+	font-family: "georgia", sans-serif;
+	font-weight: 700;
+}
