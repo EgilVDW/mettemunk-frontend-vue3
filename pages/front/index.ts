@@ -1,6 +1,8 @@
+import type { IFrontPage } from "~/interfaces/pages";
+
 export default defineNuxtComponent({
     setup() {
-        defineProps({
+        const props = defineProps({
             page: {
                 type: Object as PropType<IFrontPage>,
                 default: null,
@@ -8,7 +10,7 @@ export default defineNuxtComponent({
         })
 
         useHead(() => {
-            return generateHead(useRoute().path, this.page);
+            return generateHead(useRoute().path, props.page);
         })
     }
 })
