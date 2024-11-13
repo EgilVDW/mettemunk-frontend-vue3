@@ -1,0 +1,148 @@
+@import "../../assets/styles/settings/vars";
+@import "../../assets/styles/tools/helping-functions";
+@import "../../assets/styles/settings/spacing";
+@import "../../assets/styles/tools/mixins";
+
+.banner {
+  position: relative;
+  height: 60rem;
+
+  &--full-height {
+    height: 100vh;
+    max-height: unset;
+  }
+
+  // Opacity overlay
+  &:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.4);
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  // Hero image
+  &__image-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    overflow: hidden;
+  }
+
+  &__image {
+    height: 100%;
+  }
+
+  // video
+  &__video {
+    position: relative;
+    height: 100%;
+  }
+
+  &__video video {
+    height: 100vh;
+    width: 100vw;
+    object-fit: cover;
+  }
+  // Hero content
+  &__content {
+    height: 100%;
+    position: relative;
+  }
+
+  &__content-wrapper {
+    margin-bottom: spacing(layout, l);
+  }
+
+  &__headline {
+    color: $color-brown-bridal-health;
+    text-transform: uppercase;
+    word-break: break-word;
+  }
+
+  &__bottom-content {
+    position: relative;
+  }
+
+  &__anchor-wrapper {
+    position: absolute;
+    cursor: pointer;
+    right: 0;
+    bottom: 0;
+    transition: transform $transition;
+    padding: 2rem 2rem 0 2rem;
+    background-color: unset;
+    border: none;
+  }
+
+  &__anchor-wrapper--mobile svg {
+    width: 1.5rem;
+    height: 2rem;
+  }
+
+  &__anchor {
+    fill: $color-brown-caramel;
+    height: 3.2rem;
+    width: 1.42rem;
+  }
+
+  &__anchor-wrapper:hover {
+    transform: translateY(0.5rem);
+  }
+
+  // Specific styling for banner simple
+
+  &--simple {
+    .banner__headline {
+      margin-bottom: 2rem;
+    }
+  }
+
+  ::-webkit-media-controls {
+    display: none !important;
+  }
+}
+
+@include viewport-small {
+  .banner {
+    height: 50rem;
+
+    &--full-height {
+      height: 100vh;
+    }
+
+    &__headline {
+      margin-bottom: spacing(component, s, mobile);
+    }
+
+    &__bottom-content {
+      flex-direction: column;
+    }
+
+    &__content-wrapper {
+      margin-bottom: spacing(layout, l, mobile);
+    }
+
+    &__anchor-wrapper {
+      display: flex;
+      justify-content: center;
+      position: unset;
+      padding: 0;
+      margin-top: spacing(layout, m, mobile);
+    }
+
+    // Specific styling for banner simple
+
+    &--simple {
+      .banner__headline {
+        margin-bottom: 1.2rem;
+      }
+    }
+  }
+}

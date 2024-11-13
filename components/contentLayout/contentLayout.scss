@@ -1,0 +1,11 @@
+@import "../../assets/styles/settings/_vars.scss";
+@import "../../assets/styles/tools/_mixins.scss";
+@import "../../assets/styles/tools/_helping-functions.scss";
+
+.grid-wrapper {
+  background-color: $color-black-night-rider;
+
+  &--light {
+    background-color: $color-brown-dawn-pink;
+  }
+}

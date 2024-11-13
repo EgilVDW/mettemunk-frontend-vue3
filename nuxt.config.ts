@@ -3,4 +3,5 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   sourcemap: false,
   devtools: { enabled: true },
+  css: ["./assets/styles/site.scss"],
 });

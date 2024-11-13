@@ -41,7 +41,8 @@ import type { IFile, IImage, ILink, IVideo } from "~/interfaces/ui";
 import * as cmsHelper from "~/resources/datoCmsHelper";
 
 export async function getUrl(id: string): Promise<string> {
-  const page = (await cmsHelper.GetAllPages()) as any;
+  const pages = (await cmsHelper.GetAllPages()) as any;
+  const page = pages.find((x) => x.id === id);
 
   if (page != null) {
     return page.path;
@@ -53,9 +54,10 @@ export async function getUrl(id: string): Promise<string> {
 }
 
 export async function mapLink(link: ICmsLink): Promise<ILink> {
+  const l = link.page != null ? await getUrl(link.page?.id) : link.external;
   return {
     text: link.text,
-    url: link.page != null ? await getUrl(link.page.id) : link.external,
+    url: l,
     target: link.newWindow ? "_blank" : "",
     download: false,
     internal: link.page != null,
@@ -254,38 +256,42 @@ export function mapDepartment(block: ICmsDepartment): IDepartment {
   };
 }
 
-export function mapModularContent(
+export async function mapModularContent(
   content: ICmsModularContent[]
-): IModularContent[] {
+): Promise<IModularContent[]> {
   const list: IModularContent[] = [];
 
-  content.forEach((data) => {
+  content.forEach(async (data) => {
     if (data._modelApiKey === "seventy_thirty_block") {
-      list.push(mapSeventyThirtyBlock(data as ICmsSeventyThirtyBlock));
+      list.push(await mapSeventyThirtyBlock(data as ICmsSeventyThirtyBlock));
     }
 
     if (data._modelApiKey === "card_list_block") {
-      list.push(mapCardListBlock(data as ICmsCardListBlock));
+      list.push(await mapCardListBlock(data as ICmsCardListBlock));
     }
 
     if (data._modelApiKey === "card_list_document_block") {
-      list.push(mapCardDocumentListBlock(data as ICmsCardDocumentListBlock));
+      list.push(
+        await mapCardDocumentListBlock(data as ICmsCardDocumentListBlock)
+      );
     }
 
     if (data._modelApiKey === "card_list_article_block") {
-      list.push(mapCardArticleListBlock(data as ICmsCardArticleListBlock));
+      list.push(
+        await mapCardArticleListBlock(data as ICmsCardArticleListBlock)
+      );
     }
 
     if (data._modelApiKey === "text_block") {
-      list.push(mapTextBlock(data as ICmsTextBlock));
+      list.push(await mapTextBlock(data as ICmsTextBlock));
     }
 
     if (data._modelApiKey === "image_block") {
-      list.push(mapImageBlock(data as ICmsImageBlock));
+      list.push(await mapImageBlock(data as ICmsImageBlock));
     }
 
     if (data._modelApiKey === "video_block") {
-      list.push(mapVideoBlock(data as ICmsVideoBlock));
+      list.push(await mapVideoBlock(data as ICmsVideoBlock));
     }
   });
 

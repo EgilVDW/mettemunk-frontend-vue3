@@ -1,77 +1,75 @@
-@import "~assets/styles/settings/_spacing.scss";
-@import "~assets/styles/settings/_vars.scss";
-@import "~assets/styles/tools/_mixins.scss";
+@import "../../assets/styles/settings/_spacing.scss";
+@import "../../assets/styles/settings/_vars.scss";
+@import "../../assets/styles/tools/_mixins.scss";
 
 .article-content {
-	margin-bottom: - spacing(component,xl);
+  margin-bottom: -spacing(component, xl);
 
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		margin-bottom: spacing(component, l);
-		margin-top: spacing(component, xl);
-	}
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: spacing(component, l);
+    margin-top: spacing(component, xl);
+  }
 
-	a {
-		color: $color-red-punch;
-		text-decoration: underline;
-	}
+  a {
+    color: $color-red-punch;
+    text-decoration: underline;
+  }
 
+  h2:first-of-type {
+    margin-top: 0;
+  }
 
-	h2:first-of-type {
-		margin-top: 0;
-	}
+  p {
+    margin-top: 0;
+    margin-bottom: spacing(component, l);
+    min-height: 2.4rem;
+  }
 
-	p {
-		margin-top: 0;
-		margin-bottom: spacing(component, l);
-		min-height: 2.4rem;
-	}
+  ul {
+    padding-left: 0;
+    margin: 0;
+    margin-bottom: spacing(component, xl);
+  }
 
-	ul {
-		padding-left: 0;
-		margin: 0;
-		margin-bottom: spacing(component, xl);
-	}
+  ul li {
+    list-style: none;
+    margin-bottom: spacing(component, l);
+    padding-left: 3.2rem;
+    position: relative;
+    &::before {
+      content: "";
+      left: 0rem;
+      top: 0.7rem;
+      position: absolute;
+      width: 1.2rem;
+      height: 1.2rem;
+      background-color: $color-black-night-rider;
+      border-radius: 50%;
+    }
+  }
 
-	ul li {
-		list-style: none;
-		margin-bottom: spacing(component, l);
-		padding-left: 3.2rem;
-		position: relative;
-		&::before {
-			content: '';
-			left: 0rem;
-			top: 0.7rem;
-			position: absolute;
-			width: 1.2rem;
-			height: 1.2rem;
-			background-color: $color-black-night-rider;
-			border-radius: 50%;
-		}
-	}
-
-	ul li p{
-		margin-bottom: 0
-	}
+  ul li p {
+    margin-bottom: 0;
+  }
 }
 
 @include viewport-large {
-	.article-content {
-		h2,
-		h3,
-		h4,
-		h5,
-		h6 {
-			margin-bottom: spacing(component, m);
-			margin-top: spacing(component, l);
-		}
+  .article-content {
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: spacing(component, m);
+      margin-top: spacing(component, l);
+    }
 
-		p {
-			
-			margin-bottom: spacing(component, m);
-		}
-	}
+    p {
+      margin-bottom: spacing(component, m);
+    }
+  }
 }

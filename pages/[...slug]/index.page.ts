@@ -13,11 +13,12 @@ import type { ICardBlock } from "~/interfaces/blocks";
 
 export default defineNuxtComponent({
   setup() {
-    const { fullPath } = useRoute();
+    const { currentRoute } = useRouter();
     const { data } = useAsyncData(async () => {
       // await dictionaryStore.loadDictionaries();
       // await cmsPagesStore.loadPages();
       const cmsPagesStore = await cmsHelper.GetAllPages();
+      const fullPath = currentRoute.value.fullPath;
 
       let currentPath = fullPath;
       if (currentPath.endsWith("/") && currentPath !== "/") {
@@ -30,7 +31,7 @@ export default defineNuxtComponent({
 
       const filteredCurrentPath = getPathFromUrl(currentPath);
 
-      const currentPage = cmsPagesStore.pages.filter(
+      const currentPage = cmsPagesStore.filter(
         (p) => p.path === filteredCurrentPath
       )[0];
       if (currentPage == null) {
@@ -39,19 +40,22 @@ export default defineNuxtComponent({
 
       if (currentPage._modelApiKey === "front") {
         const cmsPage = await cmsHelper.GetFrontPage();
+        console.log(await mapper.mapLink(cmsPage.bannerLink[0]));
         const mapped: IFrontPage = {
           id: cmsPage.id,
           type: cmsPage._modelApiKey,
           bannerTitle: cmsPage.bannerTitle,
           bannerSubTitle: cmsPage.bannerSubTitle,
-          bannerImage: mapper.mapImage(cmsPage.bannerImage),
-          bannerVideo: mapper.mapVideo(cmsPage.bannerVideo),
+          bannerImage: await mapper.mapImage(cmsPage.bannerImage),
+          bannerVideo: await mapper.mapVideo(cmsPage.bannerVideo),
           bannerLink:
             cmsPage.bannerLink != null && cmsPage.bannerLink[0] != null
-              ? mapper.mapLink(cmsPage.bannerLink[0])
+              ? await mapper.mapLink(cmsPage.bannerLink[0])
               : null,
-          seo: mapper.mapSeo(cmsPage.seo),
-          modularContent: mapper.mapModularContent(cmsPage.modularContent),
+          seo: await mapper.mapSeo(cmsPage.seo),
+          modularContent: await mapper.mapModularContent(
+            cmsPage.modularContent
+          ),
         };
 
         return {

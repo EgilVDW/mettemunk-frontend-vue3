@@ -1,0 +1,64 @@
+@import "../../assets/styles/settings/_vars.scss";
+@import "../../assets/styles/settings/_fonts.scss";
+@import "../../assets/styles/tools/_mixins.scss";
+
+.base-link {
+  text-decoration: none;
+  display: inline-flex;
+  align-self: flex-start;
+
+  &--primary {
+    @include font-primary-medium;
+
+    position: relative;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    letter-spacing: 0.233rem;
+    text-transform: uppercase;
+    background-color: transparent;
+    padding: 1.9rem 1.8rem;
+    color: $color-brown-caramel;
+    border: 0.2rem solid $color-brown-caramel;
+    overflow: hidden;
+    transition: color $transition--slow;
+    z-index: 1;
+  }
+}
+
+// hover effects for desktop
+@include viewport-mouse {
+  .base-link {
+    &--primary::before {
+      content: "";
+      position: absolute;
+      height: calc(100% + 6rem);
+      width: 200%;
+      min-width: 20rem;
+      bottom: -3rem;
+      left: -4rem;
+      transform: skewX(50deg) translateX(calc(-100%));
+      background-color: $color-brown-caramel;
+      transition: transform $transition--slow;
+      z-index: -1;
+    }
+
+    &--primary:hover {
+      color: $color-black-dark-jungle;
+    }
+
+    &--primary:hover::before {
+      transform: skewX(50deg) translateX(0);
+    }
+  }
+}
+
+@include viewport-small {
+  .base-link {
+    align-self: unset;
+
+    &--primary {
+      padding: 1.3rem 1.8rem;
+    }
+  }
+}
