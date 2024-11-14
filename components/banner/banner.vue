@@ -36,7 +36,7 @@
             :link="page.bannerLink"
           />
           <button
-            v-if="mq != 'mobile'"
+            v-if="isLargeScreen"
             class="banner__anchor-wrapper"
             @click="scrollToSection"
           >
@@ -55,13 +55,10 @@
   </div>
 </template>
 <script setup lang="ts">
-const mq = computed(() => {
-  if (window && window.innerWidth < 768) {
-    return "mobile";
-  } else {
-    return "desktop";
-  }
-});
+import { useMediaQuery } from "@vueuse/core";
+import type { ICmsBannerPage } from "~/interfaces/cms/cmsPages";
+
+const isLargeScreen = useMediaQuery("(min-width: 768px)");
 
 defineProps({
   page: {
@@ -82,7 +79,7 @@ const scrollToSection = () => {
   const el = document.querySelector("#main");
   if (el) {
     // @ts-ignore
-    const offset = this.$mq.includes("desktop") ? 130 : 80;
+    const offset = isLargeScreen ? 130 : 80;
     const bodyRect = document.body.getBoundingClientRect().top;
     const elementRect = el.getBoundingClientRect().top;
     const elementPosition = elementRect - bodyRect;
