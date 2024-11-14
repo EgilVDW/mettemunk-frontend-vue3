@@ -14,4 +14,18 @@
 		</ContentLayoutSimple>
 	</main>
 </template>
-<script src="./index.ts" lang="ts"></script>
+<script lang="ts">
+import type { IContactPage } from "~/interfaces/pages";
+import type { ILink } from "~/interfaces/ui";
+
+defineProps({
+	page: {
+		type: Object as PropType<IContactPage>,
+		default: null,
+	},
+	breadcrumbs: {
+		type: Object as PropType<ILink>,
+		required: true, // ???
+	},
+});
+</script>
