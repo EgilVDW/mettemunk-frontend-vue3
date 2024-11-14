@@ -13,7 +13,7 @@
         <!-- Logo -->
         <div class="flex-vertical-center">
           <nuxt-link to="/" class="header__logo-link flex flex-vertical-center">
-            <svg-icon name="icon-logo" class="header__logo logo" />
+            <IconLogo class="header__logo logo" filled />
           </nuxt-link>
         </div>
 
@@ -66,6 +66,7 @@
 </template>
 <script setup lang="ts">
 import type { IHeader } from "~/interfaces/global";
+import IconLogo from "~/assets/icons/icon-logo.svg";
 
 defineProps({
   data: {

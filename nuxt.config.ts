@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   sourcemap: false,
   devtools: { enabled: true },
   css: ["./assets/styles/site.scss"],
-  modules: ["@vueuse/nuxt"],
+  modules: ["@vueuse/nuxt", "nuxt-svgo"],
   runtimeConfig: {
     public: {
       CULTURE: process.env.CULTURE,

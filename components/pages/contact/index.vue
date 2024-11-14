@@ -14,7 +14,7 @@
 		</ContentLayoutSimple>
 	</main>
 </template>
-<script lang="ts">
+<script setup lang="ts">
 import type { IContactPage } from "~/interfaces/pages";
 import type { ILink } from "~/interfaces/ui";
 
