@@ -1,0 +1,18 @@
+@import "../../assets/styles/tools/_mixins.scss";
+@import "../../assets/styles/settings/_spacing.scss";
+@import "../../assets/styles/settings/_vars.scss";
+@import "../../assets/styles/tools/helping-functions";
+
+.seventy-block {
+  &.is-reversed {
+    flex-direction: row-reverse;
+  }
+}
+
+@include viewport-small {
+  .seventy-block {
+    &__image {
+      margin-bottom: spacing(component, l);
+    }
+  }
+}

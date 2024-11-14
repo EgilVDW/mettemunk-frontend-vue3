@@ -1,0 +1,168 @@
+@import "../../assets/styles/settings/vars";
+@import "../../assets/styles/tools/helping-functions";
+@import "../../assets/styles/settings/spacing";
+@import "../../assets/styles/tools/mixins";
+@import "../../assets/styles/settings/fonts";
+@import "../../assets/styles/base/typography";
+
+.footer {
+	background-color: $color-black-mine-shaft;
+	color: $color-brown-bridal-health;
+
+	&__logo {
+		width: 21rem;
+		height: 5.2rem;
+		object-fit: unset;
+	}
+
+	&__item,
+	p,
+	a {
+		color: $color-brown-bridal-health;
+		font-size: clamp(1.2rem, px-to-vw(14), 1.4rem);
+		line-height: clamp(1.8rem, px-to-vw(22), 2.2rem);
+		text-decoration: none;
+		margin-top: 0;
+	}
+
+	a {
+		margin-bottom: spacing(component, reset);
+	}
+
+	&__item {
+		margin-bottom: spacing(component, m);
+	}
+
+	&__item:nth-last-of-type(1) {
+		margin-bottom: 0;
+	}
+	 
+
+	p:nth-last-of-type(1) {
+		margin-bottom: 0;
+	}
+
+	h5 {
+		color: $color-brown-bridal-health;
+	}
+
+
+	&__seperator {
+		position: relative;
+		overflow: visible;
+		height: 0.1rem;
+		margin-left: 0.6rem;
+		margin-right: 0.6rem;
+		background-color: $color-brown-caramel;
+
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			top: 50%;
+			width: 0.6rem;
+			height: 0.6rem;
+			background-color: $color-black-mine-shaft;
+			border: 1.5px solid $color-brown-caramel;
+			border-radius: 50%;
+			transform: translateY(-50%);
+		}
+
+		&::before {
+			left: -0.6rem;
+		}
+
+		&::after {
+			right: -0.6rem;
+		}
+	}
+
+	&__some-link {
+		position: relative;
+		width: 4rem;
+		height: 4rem;
+		border-radius: 50%;
+		background-color: $color-white;
+		transition: all 0.6s $transition--cubic;
+		z-index: 2;
+		transform: translateZ(0);
+		backface-visibility: visible;
+
+		&::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			border-radius: 50%;
+			z-index: -1;
+			opacity: 1;
+			transform: scale(1) translateZ(0);
+			transform-origin: center;
+			transition: all 1s $transition--cubic;
+			background-color: $color-white;
+		}
+
+		&:hover {
+			border-radius: 15px;
+			transform: translateZ(0);
+			&::after {
+				transform: scale(1.4) translateZ(0);
+				opacity: 0;
+			}
+		}
+	}
+
+	&__some-icon {
+		width: 2.2rem;
+		height: 2.2rem;
+		fill: $color-black-mine-shaft;
+	}
+
+	&__seal-text {
+		color: $color-brown-bridal-health;
+		font-weight: 900;
+	}
+
+	&__seal-icon {
+		width: 5rem;
+		height: 5rem;
+	}
+}
+
+@include viewport-medium {
+	.footer {
+		&__logo {
+			width: 12.6rem;
+			height: 3.2rem;
+			margin-bottom: spacing(layout, s);
+			border: 0.1rem solid #fff;
+		}
+
+		&__headline {
+			margin-top: 1rem;
+		}
+
+		&__some-link {
+			width: 2.5rem;
+			height: 2.5rem;
+			// overwrite default styling for links in footer
+			margin-bottom: 0 !important;
+		}
+
+		&__some-icon {
+			width: 1.4rem;
+			height: 1.4rem;
+		}
+
+		&__seal-text {
+			margin-right: 1.2rem;
+		}
+
+		&__seal-icon {
+			width: 3rem;
+			height: 3rem;
+		}
+	}
+}

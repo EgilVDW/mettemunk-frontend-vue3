@@ -71,10 +71,12 @@ export default defineNuxtComponent({
           type: cmsPage._modelApiKey,
           title: cmsPage.title,
           content: cmsPage.content,
-          image: mapper.mapImage(cmsPage.image),
-          seo: mapper.mapSeo(cmsPage.seo),
-          departments: cmsPage.departments.map((x) => mapper.mapDepartment(x)),
-          showTop: cmsPage.showTop,
+          image: await mapper.mapImage(cmsPage.image),
+          seo: await mapper.mapSeo(cmsPage.seo),
+          departments: await Promise.all(
+            cmsPage.departments.map(async (x) => await mapper.mapDepartment(x))
+          ),
+          showTop: await cmsPage.showTop,
         };
 
         return {
@@ -94,11 +96,13 @@ export default defineNuxtComponent({
           bannerVideo: mapper.mapVideo(cmsPage.bannerVideo),
           bannerLink:
             cmsPage.bannerLink != null && cmsPage.bannerLink[0] != null
-              ? mapper.mapLink(cmsPage.bannerLink[0])
+              ? await mapper.mapLink(cmsPage.bannerLink[0])
               : null,
           seo: mapper.mapSeo(cmsPage.seo),
           title: cmsPage.title,
-          modularContent: mapper.mapModularContent(cmsPage.modularContent),
+          modularContent: await mapper.mapModularContent(
+            cmsPage.modularContent
+          ),
         };
 
         return {
@@ -118,10 +122,12 @@ export default defineNuxtComponent({
           bannerVideo: mapper.mapVideo(cmsPage.bannerVideo),
           bannerLink:
             cmsPage.bannerLink != null && cmsPage.bannerLink[0] != null
-              ? mapper.mapLink(cmsPage.bannerLink[0])
+              ? await mapper.mapLink(cmsPage.bannerLink[0])
               : null,
           seo: mapper.mapSeo(cmsPage.seo),
-          modularContent: mapper.mapModularContent(cmsPage.modularContent),
+          modularContent: await mapper.mapModularContent(
+            cmsPage.modularContent
+          ),
         };
 
         return {
@@ -186,7 +192,7 @@ export default defineNuxtComponent({
           bannerVideo: mapper.mapVideo(cmsPage.bannerVideo),
           bannerLink:
             cmsPage.bannerLink != null && cmsPage.bannerLink[0] != null
-              ? mapper.mapLink(cmsPage.bannerLink[0])
+              ? await mapper.mapLink(cmsPage.bannerLink[0])
               : null,
           seo: mapper.mapSeo(cmsPage.seo),
           items: mappedItems,
@@ -229,7 +235,7 @@ export default defineNuxtComponent({
           bannerVideo: mapper.mapVideo(cmsPage.bannerVideo),
           bannerLink:
             cmsPage.bannerLink != null && cmsPage.bannerLink[0] != null
-              ? mapper.mapLink(cmsPage.bannerLink[0])
+              ? await mapper.mapLink(cmsPage.bannerLink[0])
               : null,
           seo: mapper.mapSeo(cmsPage.seo),
           products: mappedProducts,

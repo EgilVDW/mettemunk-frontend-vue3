@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "graphql-request": "^7.1.2",
+    "gsap": "^3.12.5",
     "sass-embedded": "^1.80.7",
     "vue-datocms": "^7.0.5"
   }

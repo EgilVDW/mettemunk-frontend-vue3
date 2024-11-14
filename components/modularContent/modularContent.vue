@@ -8,12 +8,12 @@
         { 'l-mb-s': index !== data.length - 1 && lessSpacing },
       ]"
     >
-      <!-- <LazySeventyThirtyBlock
-				v-if="item.type == 'seventy_thirty_block'"
-				:data="item"
-				:unique-id="index + 'seven-thirty-block'"
-			/>
-			<LazyCardListBlock v-if="item.type == 'card_list_block'" :data="item.cards" />
+      <LazySeventyThirtyBlock
+        v-if="item.type == 'seventy_thirty_block'"
+        :data="item"
+        :unique-id="index + 'seven-thirty-block'"
+      />
+      <!-- <LazyCardListBlock v-if="item.type == 'card_list_block'" :data="item.cards" />
 			<LazyCardDocumentListBlock v-if="item.type == 'card_list_document_block'" :data="item.cards" />
 			<LazyCardArticleListBlock v-if="item.type == 'card_list_article_block'" :data="item.cards" />
 			<LazyImageBlock v-if="item.type == 'image_block'" :data="item" />
@@ -25,7 +25,7 @@
 <script lang="ts" setup>
 defineProps({
   data: {
-    type: Array as PropType<IModularContent[]>,
+    type: Array as PropType<any[]>,
     required: true,
   },
   lessSpacing: {

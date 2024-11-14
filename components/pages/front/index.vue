@@ -9,7 +9,7 @@
 <script lang="ts" setup>
 import type { IFrontPage } from "~/interfaces/pages";
 
-const props = defineProps({
+defineProps({
   page: {
     type: Object as PropType<IFrontPage>,
     default: null,

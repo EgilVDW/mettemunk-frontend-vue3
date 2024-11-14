@@ -1,0 +1,289 @@
+@import "../../assets/styles/settings/_vars.scss";
+@import "../../assets/styles/settings/_fonts.scss";
+@import "../../assets/styles/tools/_mixins.scss";
+@import "../../assets/styles/tools/_helping-functions.scss";
+
+.header {
+  height: clamp(8rem, px-to-vw(130), 13rem);
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  transition: background-color $transition;
+  position: fixed;
+  z-index: 9;
+
+  &__wrapper {
+    z-index: 10;
+  }
+
+  &__logo {
+    height: clamp(3.1rem, px-to-vw(52), 5.2rem);
+    width: clamp(12.6rem, px-to-vw(211), 21.1rem);
+    object-fit: unset;
+  }
+
+  // language selector/dropdown
+  &__language-selector {
+    position: relative;
+    margin-right: 2rem;
+  }
+
+  &__current-language {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &__language-selector span {
+    @include font-primary-black;
+
+    font-size: 1.2rem;
+    margin-right: 0.4rem;
+  }
+
+  &__language-selector svg {
+    height: 0.6rem;
+    width: 1.1rem;
+    transition: transform $transition;
+  }
+
+  &__language-dropdown {
+    position: absolute;
+    max-height: 0;
+    left: 0.6rem;
+    overflow: hidden;
+    transition: max-height $transition;
+  }
+
+  &__language-dropdown a {
+    @include font-primary-black;
+
+    font-size: 1.2rem;
+    text-decoration: unset;
+    color: $color-brown-camel;
+  }
+
+  &__language-dropdown a:hover {
+    text-decoration: underline;
+  }
+
+  // language dropdown active
+  &__language-selector.is-active &__language-dropdown {
+    max-height: 10rem;
+  }
+
+  &__language-selector.is-active svg {
+    transform: rotateX(180deg) scaleX(-1);
+  }
+
+  // menu button
+  &__menu {
+    position: relative;
+    height: clamp(4.8rem, px-to-vw(56), 5.6rem);
+    width: clamp(4.8rem, px-to-vw(56), 5.6rem);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__menu:before {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    height: clamp(6rem, px-to-vw(70), 7rem);
+    width: clamp(6rem, px-to-vw(70), 7rem);
+    background-color: transparent;
+    border: 0.2rem solid;
+    border-radius: 50%;
+    transition: all $transition;
+  }
+
+  &__menu:hover::before {
+    transform: scale(1.05);
+  }
+
+  &__menu-text {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    transition: all $transition;
+    will-change: opacity, background-color, color;
+    transition-delay: 0.2s;
+  }
+
+  &__menu-text span {
+    transition: all $transition;
+    letter-spacing: 0.1rem;
+  }
+
+  &__menu.is-active &__menu-text {
+    transition: all $transition;
+    opacity: 0;
+    transition-delay: 0s;
+  }
+
+  &__menu-close {
+    position: relative;
+    height: 1.2rem;
+    width: 1.2rem;
+  }
+
+  // close icon default
+  &__menu-close span {
+    position: absolute;
+    height: 0.2rem;
+    width: 1.5rem;
+    opacity: 0;
+    transition: transform $transition, opacity $transition,
+      background-color $transition, color $transition;
+    transition-delay: 0s;
+  }
+
+  // close icon inactive state
+  &__menu-close span:first-of-type {
+    transform: rotate(45deg) scale(0);
+  }
+
+  &__menu-close span:last-of-type {
+    transform: rotate(-45deg) scale(0);
+  }
+
+  // close icon active state
+  &__menu.is-active &__menu-close span {
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+
+  &__menu.is-active &__menu-close span:first-of-type {
+    transform: rotate(45deg) scale(1);
+  }
+
+  &__menu.is-active &__menu-close span:last-of-type {
+    transform: rotate(-45deg) scale(1);
+  }
+}
+
+// Color Themes
+.header.is-dark-theme {
+  &.is-scrolling {
+    background-color: $color-black-night-rider;
+  }
+
+  // language selector
+  .header__current-language span {
+    color: $color-brown-tequila;
+  }
+
+  .header__language-dropdown a {
+    color: $color-brown-tequila;
+    &:visited {
+      color: $color-brown-tequila;
+    }
+  }
+
+  .header__current-language svg {
+    fill: $color-brown-tequila;
+  }
+
+  // menu
+  .header__menu {
+    background-color: $color-brown-tequila;
+  }
+
+  .header__menu:before {
+    border-color: $color-brown-bridal-health;
+  }
+
+  .header__menu-text span {
+    transition: color $transition--fast;
+    color: $color-brown-shadow;
+  }
+
+  .header__menu-close span {
+    background-color: $color-brown-shadow;
+  }
+
+  .header__logo {
+    border: 0.1rem solid $color-white;
+  }
+}
+
+.header.is-light-theme {
+  &.is-scrolling {
+    background-color: $color-brown-dawn-pink;
+  }
+
+  // language selector
+  .header__current-language span {
+    color: $color-brown-camel;
+  }
+
+  .header__current-language svg {
+    fill: $color-brown-camel;
+  }
+
+  // menu
+  .header__menu {
+    background-color: $color-brown-camel;
+  }
+
+  .header__menu:before {
+    border-color: $color-brown-shadow;
+  }
+
+  .header__menu-text span {
+    color: $color-brown-dawn-pink;
+  }
+
+  .header__menu-close span {
+    background-color: $color-brown-dawn-pink;
+  }
+
+  .header__logo {
+    border: 0.2rem solid #706f6f;
+  }
+}
+
+.header.is-active {
+  &.is-scrolling {
+    background-color: $color-black-night-rider;
+  }
+
+  // language selector
+  .header__current-language span {
+    color: $color-brown-tequila;
+  }
+
+  .header__language-dropdown a {
+    color: $color-brown-tequila;
+    &:visited {
+      color: $color-brown-tequila;
+    }
+  }
+
+  .header__current-language svg {
+    fill: $color-brown-tequila;
+  }
+
+  // menu
+  .header__menu {
+    background-color: $color-brown-tequila;
+  }
+
+  .header__menu:before {
+    border-color: $color-brown-bridal-health;
+  }
+
+  .header__menu-text span {
+    color: $color-brown-shadow;
+  }
+
+  .header__menu-close span {
+    background-color: $color-brown-shadow;
+  }
+
+  .header__logo {
+    border: 0.2rem solid $color-white;
+  }
+}
