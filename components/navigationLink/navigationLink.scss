@@ -1,0 +1,58 @@
+@import "../../assets/styles/settings/vars";
+@import "../../assets/styles/tools/mixins";
+
+.navigation-link {
+    position: relative;
+    display: inline-flex;
+    z-index: 2;
+    transition:color $transition--fast;
+
+    &__icon {
+        width: 1.8rem;
+        height: 1.2rem;
+        fill: $color-brown-caramel;
+        transition:transform $transition--fast;
+    }
+
+    &--under-line::after {
+        content: '';
+        width: 100%;
+        height: 0.1rem;
+        background-color: $color-brown-caramel;
+        position: absolute;
+        bottom: -0.1rem;
+        left: 0;
+        transition:all $transition--fast;
+        will-change: height, width;
+        z-index: -1;
+    }
+
+    &:hover .navigation-link__icon {
+        transform: translateX(.5rem);
+    }
+
+    &:hover.navigation-link--under-line {
+        color: $color-black-mine-shaft;
+        &::after {
+            height: 100%;
+            width: calc(100% + 0.5rem);
+        }
+    }
+}
+
+@include viewport-medium {
+    .navigation-link {
+        &--under-line::after {
+            bottom: -0.5rem;
+        }
+
+
+        &:hover.navigation-link--under-line {
+            color: $color-brown-bridal-health;
+            &::after {
+                height: 0.1rem;
+                width: 100%;
+            }
+        }
+    }
+}
