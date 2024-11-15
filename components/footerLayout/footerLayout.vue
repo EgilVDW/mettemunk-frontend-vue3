@@ -3,7 +3,7 @@
     <div class="main-grid">
       <div class="row">
         <div class="col">
-          <svg-icon name="icon-logo" class="footer__logo logo l-mb-m" />
+          <IconLogo class="footer__logo logo l-mb-m" filled />
         </div>
       </div>
       <div class="row">
@@ -71,7 +71,7 @@
                 :href="dictionary.socialMediaLinkedin"
                 target="_blank"
               >
-                <SvgIcon class="footer__some-icon" name="icon-linkedin" />
+                <IconLinkedin class="footer__some-icon" filled />
               </a>
             </div>
             <div class="flex-vertical-center">
@@ -81,7 +81,7 @@
               >
                 {{ dictionary.generalCompanyName }}
               </span>
-              <SvgIcon class="footer__seal-icon" name="icon-seal" />
+              <IconSeal class="footer__seal-icon" filled />
             </div>
           </div>
         </div>
@@ -93,6 +93,9 @@
 import { useGetDictionary } from "~/composable/useGetDictionary";
 import type { IFooter } from "~/interfaces/global";
 import type { IImage } from "~/interfaces/ui";
+import IconLogo from "~/assets/icons/icon-logo.svg";
+import IconLinkedin from "~/assets/icons/icon-linkedin.svg";
+import IconSeal from "~/assets/icons/icon-seal.svg";
 
 defineProps({
   data: {
