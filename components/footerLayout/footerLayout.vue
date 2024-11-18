@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <div class="col-lg-2">
-          <StructuredText :data="data.column1" />
+          <datocms-structured-text :data="data.column1" />
         </div>
         <div class="col-lg-2">
           <ul

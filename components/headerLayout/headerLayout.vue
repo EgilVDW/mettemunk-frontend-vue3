@@ -113,7 +113,7 @@ const onScroll = () => {
   // Set active background when scrolling
   window.addEventListener("scroll", () => {
     // If menu is active, dont apply the active background color
-    const menu = document.querySelector(".menu");
+    const menu = document.querySelector(".menu"); // ???
     if (menu && !menu.className.includes("is-active")) {
       if (styleBackground.value === "is-light-theme") {
         window.scrollY < 5

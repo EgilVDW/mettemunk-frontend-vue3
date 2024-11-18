@@ -1,0 +1,13 @@
+@import "../../assets/styles/settings/vars";
+@import "../../assets/styles/tools/mixins";
+
+.card-list {
+	// Remove last row bottom spacing on cards
+	margin-bottom: -4rem;
+}
+
+@include viewport-small {
+	.card-list {
+		margin-bottom: -2rem;
+	}
+}

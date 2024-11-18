@@ -1,0 +1,83 @@
+@import "../../assets/styles/settings/_spacing.scss";
+@import "../../assets/styles/settings/_vars.scss";
+@import "../../assets/styles/tools/helping-functions";
+@import "../../assets/styles/tools/mixins";
+
+.default-card {
+	position: relative;
+	margin-bottom: clamp(2rem, px-to-vw(40), 4rem);
+
+	&__wrapper {
+		border: 0.2rem $color-white solid;
+		height: 100%;
+		overflow: hidden;
+	}
+
+	&__image {
+		height: 28rem;
+	}
+
+	&__image img {
+		// Overwrite datocms default transform - still included in this line (opacity)
+		transition: transform $transition, opacity 500ms ease 500ms !important;
+	}
+
+	&__text-content {
+		padding: 4rem 4rem 0 4rem;
+		flex: 1;
+	}
+
+	&__text-content p {
+		margin-bottom: 4rem;
+	}
+
+	&__link {
+		padding-bottom: 4rem;
+		text-transform: uppercase;
+	}
+
+	&__link svg {
+		width: 1.8rem;
+		height: 1.2rem;
+		fill: $color-brown-caramel;
+		transition: transform $transition--fast;
+		margin-left: 1rem;
+	}
+
+	&__link::before {
+		position: absolute;
+		content: "";
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+}
+
+@include viewport-mouse {
+	.default-card {
+		&:hover &__link svg {
+			transform: translateX(0.5rem);
+		}
+
+		&:hover &__image img {
+			transform: scale(1.05);
+		}
+	}
+}
+
+@include viewport-small {
+	.default-card {
+		&__link {
+			padding-bottom: 0;
+		}
+
+		&__link h2 {
+			font-size: 1.2rem;
+		}
+
+		&__image {
+			height: 18.6rem;
+		}
+	}
+}

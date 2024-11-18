@@ -16,7 +16,7 @@
 		target="_blank"
 	>
 		{{ text }}
-		<IconArrow v-if="icon" class="navigation-link__icon c-ml-s" />
+		<IconArrow v-if="icon" class="navigation-link__icon c-ml-s" filled />
 	</a>
 </template>
 <script setup lang="ts">
