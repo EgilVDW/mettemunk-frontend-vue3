@@ -18,10 +18,12 @@
 import { generateHead } from "~/utils/generateHead";
 import type { IContactPage } from "~/interfaces/pages";
 import type { ILink } from "~/interfaces/ui";
+import { useRouter } from "vue-router"; // ???
 
 export default defineNuxtComponent({
     setup() {
-        defineProps({
+		const { currentRoute } = useRouter();
+        const props = defineProps({
 			page: {
 				type: Object as PropType<IContactPage>,
 				default: null,
@@ -29,10 +31,10 @@ export default defineNuxtComponent({
 			breadcrumbs: {
 				type: Object as PropType<ILink>,
 				required: true,
-			}
+			},
         })
         useHead(() => {
-            return generateHead(this.$route.path, this.page);
+            return generateHead(currentRoute.value.path, props.page);
         })
     }
 });
