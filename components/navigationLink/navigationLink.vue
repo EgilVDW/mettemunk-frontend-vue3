@@ -6,7 +6,7 @@
 		:class="{ 'navigation-link--under-line': underLine }"
 	>
 		{{ text }}
-		<IconArrow v-if="icon" class="navigation-link__icon c-ml-s" />
+		<nuxt-icon v-if="icon" name="icon-arrow" class="navigation-link__icon c-ml-s" filled />
 	</NuxtLink>
 	<a
 		v-else
@@ -16,11 +16,10 @@
 		target="_blank"
 	>
 		{{ text }}
-		<IconArrow v-if="icon" class="navigation-link__icon c-ml-s" filled />
+		<nuxt-icon v-if="icon" class="navigation-link__icon c-ml-s" name="icon-arrow" filled />
 	</a>
 </template>
 <script setup lang="ts">
-import IconArrow from "~/assets/icons/icon-arrow.svg";
 
 defineProps({
 	link: {

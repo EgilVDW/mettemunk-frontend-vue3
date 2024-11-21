@@ -7,7 +7,7 @@
     <!-- Image -->
     <div class="seventy-block__image col-md-9 col-12">
       <slot :name="'seventy-thirty-mobile-' + data.title"></slot>
-      <DatocmsImage v-if="data.image" :data="data.image.responsiveImage" />
+      <DatocmsImage v-if="data.image" :data="data.image.responsiveImage" layout="responsive" />
     </div>
 
     <!-- Text content -->

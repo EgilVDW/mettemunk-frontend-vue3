@@ -5,6 +5,7 @@
 				v-if="data.image.responsiveImage"
 				class="default-card__image"
 				:data="data.image.responsiveImage"
+				layout="responsive"
 			/>
 			<div v-if="isLargeScreen" class="default-card__text-content flex-vertical-direction flex-space-between">
 				<div>
@@ -17,7 +18,7 @@
 					:to="data.link.url"
 				>
 					{{ data.link.text }}
-					<IconArrow class="navigation-link__icon c-ml-s" filled />
+					<nuxt-icon name="icon-arrow" class="navigation-link__icon c-ml-s" filled />
 				</NuxtLink>
 			</div>
 			<div v-else>
@@ -27,7 +28,7 @@
 					:to="data.link.url"
 				>
 					<h2 class="text-cta text-cta--light c-my-l c-ml-l">{{ data.title }}</h2>
-					<IconArrow class="navigation-link__icon c-ml-s" filled />
+					<nuxt-icon name="icon-arrow" class="navigation-link__icon c-ml-s" filled />
 				</NuxtLink>
 			</div>
 		</div>
@@ -35,9 +36,9 @@
 </template>
 <script setup lang="ts">
 import type { ICardBlock } from "~/interfaces/blocks";
-import IconArrow from "~/assets/icons/icon-arrow.svg";
+import { useMediaQueryCustom } from "~/composable/useMediaQueryCustom";
 
-const isLargeScreen = useMediaQuery("(min-width: 768px)"); // ???
+const { isLargeScreen} = useMediaQueryCustom() // ???
 
 defineProps({
 	data: {

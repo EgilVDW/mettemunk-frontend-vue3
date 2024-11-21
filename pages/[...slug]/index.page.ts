@@ -10,11 +10,12 @@ import type {
 } from "~/interfaces/pages";
 import * as cmsHelper from "../../resources/datoCmsHelper";
 import type { ICardBlock } from "~/interfaces/blocks";
+import type { RefSymbol } from "@vue/reactivity";
 
 export default defineNuxtComponent({
   setup() {
     const { currentRoute } = useRouter();
-    const { data } = useAsyncData(async () => {
+    const { data, error } = useAsyncData("page",  async () => {
       // await dictionaryStore.loadDictionaries();
       // await cmsPagesStore.loadPages();
       const cmsPagesStore = await cmsHelper.GetAllPages();
@@ -81,7 +82,7 @@ export default defineNuxtComponent({
 
         return {
           page: mapped,
-          breadcrumbs: generateBreadcrumbs(cmsPage.id),
+          breadcrumbs: await generateBreadcrumbs(cmsPage.id),
         };
       }
       // ARTICLE
@@ -107,7 +108,7 @@ export default defineNuxtComponent({
 
         return {
           page: mapped,
-          breadcrumbs: generateBreadcrumbs(cmsPage.id),
+          breadcrumbs: await generateBreadcrumbs(cmsPage.id),
         };
       }
       // LANDING
@@ -132,7 +133,7 @@ export default defineNuxtComponent({
 
         return {
           page: mapped,
-          breadcrumbs: generateBreadcrumbs(cmsPage.id),
+          breadcrumbs: await generateBreadcrumbs(cmsPage.id),
         };
       }
       // CATEGORY LIST
@@ -200,7 +201,7 @@ export default defineNuxtComponent({
 
         return {
           page: mappedPage,
-          breadcrumbs: generateBreadcrumbs(cmsPage.id),
+          breadcrumbs: await generateBreadcrumbs(cmsPage.id),
         };
       }
       // CATEGORY
@@ -243,7 +244,7 @@ export default defineNuxtComponent({
 
         return {
           page: mappedPage,
-          breadcrumbs: generateBreadcrumbs(cmsPage.id),
+          breadcrumbs: await generateBreadcrumbs(cmsPage.id),
         };
       }
       // PRODUCT
@@ -263,14 +264,17 @@ export default defineNuxtComponent({
 
         return {
           page: mappedPage,
-          breadcrumbs: generateBreadcrumbs(cmsPage.id),
+          breadcrumbs: await generateBreadcrumbs(cmsPage.id),
         };
       }
-      // 404
       else {
         throw new Error(`No page supports type '${currentPage._modelApiKey}'`);
       }
     });
+
+    if(error.value) {
+      throw createError({statusCode: 404, fatal: true})
+    }
 
     return {
       data,

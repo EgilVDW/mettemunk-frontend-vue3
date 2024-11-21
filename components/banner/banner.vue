@@ -40,14 +40,14 @@
             class="banner__anchor-wrapper"
             @click="scrollToSection"
           >
-            <svg-icon class="banner__anchor" name="icon-arrow-long" />
+            <!-- <svg-icon class="banner__anchor" name="icon-arrow-long" /> -->
           </button>
           <button
             v-else
             class="banner__anchor-wrapper banner__anchor-wrapper--mobile"
             @click="scrollToSection"
           >
-            <svg-icon class="banner__anchor" name="icon-arrow-light-vertical" />
+            <!-- <svg-icon class="banner__anchor" name="icon-arrow-light-vertical" /> -->
           </button>
         </div>
       </div>
@@ -55,10 +55,11 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useMediaQuery } from "@vueuse/core";
+import { useMediaQueryCustom } from "~/composable/useMediaQueryCustom";
 import type { ICmsBannerPage } from "~/interfaces/cms/cmsPages";
 
-const isLargeScreen = useMediaQuery("(min-width: 768px)");
+
+const { isLargeScreen } = useMediaQueryCustom();
 
 defineProps({
   page: {

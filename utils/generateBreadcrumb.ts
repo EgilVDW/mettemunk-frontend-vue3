@@ -6,6 +6,7 @@ export async function generateBreadcrumbs(id: string): Promise<ILink[]> {
   const pages: ICmsBasicPage[] = await GetAllPages();
   const breadcrumbs: ICmsBasicPage[] = [];
 
+
   let currentNode = pages.filter((page) => page.id === id)[0];
 
   while (currentNode != null) {

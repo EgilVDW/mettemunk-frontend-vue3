@@ -1,31 +1,36 @@
 <template>
 	<main v-if="page">
-		<ContentLayoutSimple>
+		<!-- <ContentLayoutSimple>
 			<template #breadcrumb>
-				<Breadcrumbs :data="breadcrumbs" />
+				<Breadcrumbs :data="data.breadcrumbs" />
 			</template>
-			<ContactIntro v-if="page.showTop" :data="page" />
+			<ContactIntro v-if="data.page.showTop" :data="page" />
 
 			<ContactList
 				v-for="(department, index) in page.departments"
 				:key="department.name + index"
 				:data="department"
 			/>
-		</ContentLayoutSimple>
+		</ContentLayoutSimple> -->
 	</main>
 </template>
-<script setup lang="ts">
+<script lang="ts" setup>
+import { generateHead } from "~/utils/generateHead";
 import type { IContactPage } from "~/interfaces/pages";
 import type { ILink } from "~/interfaces/ui";
 
-defineProps({
+const { currentRoute } = useRouter();
+const props = defineProps({
 	page: {
 		type: Object as PropType<IContactPage>,
 		default: null,
 	},
 	breadcrumbs: {
 		type: Object as PropType<ILink>,
-		required: true, // ???
+		required: true,
 	},
+})
+useHead(() => {
+	return generateHead(currentRoute.value.path, props.page);
 });
 </script>

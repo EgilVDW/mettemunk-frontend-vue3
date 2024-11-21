@@ -13,7 +13,7 @@
         <!-- Logo -->
         <div class="flex-vertical-center">
           <nuxt-link to="/" class="header__logo-link flex flex-vertical-center">
-            <IconLogo class="header__logo logo" filled />
+            <nuxt-icon name="icon-logo" class="header__logo logo" filled />
           </nuxt-link>
         </div>
 
@@ -66,7 +66,6 @@
 </template>
 <script setup lang="ts">
 import type { IHeader } from "~/interfaces/global";
-import IconLogo from "~/assets/icons/icon-logo.svg";
 
 defineProps({
   data: {
@@ -113,7 +112,7 @@ const onScroll = () => {
   // Set active background when scrolling
   window.addEventListener("scroll", () => {
     // If menu is active, dont apply the active background color
-    const menu = document.querySelector(".menu"); // ???
+    const menu = document.querySelector(".header"); // ???
     if (menu && !menu.className.includes("is-active")) {
       if (styleBackground.value === "is-light-theme") {
         window.scrollY < 5
