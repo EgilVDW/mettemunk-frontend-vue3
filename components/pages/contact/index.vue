@@ -1,17 +1,17 @@
 <template>
 	<main v-if="page">
-		<!-- <ContentLayoutSimple>
+		<ContentLayoutSimple>
 			<template #breadcrumb>
-				<Breadcrumbs :data="data.breadcrumbs" />
+				<Breadcrumbs :data="breadcrumbs" />
 			</template>
-			<ContactIntro v-if="data.page.showTop" :data="page" />
+			<ContactIntro v-if="page.showTop" :data="page" />
 
 			<ContactList
 				v-for="(department, index) in page.departments"
 				:key="department.name + index"
 				:data="department"
 			/>
-		</ContentLayoutSimple> -->
+		</ContentLayoutSimple>
 	</main>
 </template>
 <script lang="ts" setup>

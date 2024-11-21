@@ -1,0 +1,61 @@
+@import "../../assets/styles/settings/_vars.scss";
+@import "../../assets/styles/tools/mixins.scss";
+@import "../../assets/styles/settings/_spacing.scss";
+
+.contact-intro {
+	&__image {
+		height: 44.5rem;
+	}
+
+	&__headline {
+		margin-bottom: 2rem;
+	}
+
+	&__text {
+		// Override default text
+		color: $color-black-mine-shaft !important;
+	}
+
+	&__text p:first-of-type {
+		margin-top: 0;
+		margin-bottom: 2rem;
+	}
+}
+
+@media only screen and (max-width: 1600px) {
+	.contact-intro__image {
+		height: 42.4rem;
+	} 
+}
+
+@media only screen and (max-width: 1536px) {
+	.contact-intro__image {
+		height: 35rem;
+	} 
+}
+
+@media only screen and (max-width: 1280px) {
+	.contact-intro__image {
+		height: 34.4rem;
+	} 
+}
+
+@media only screen and (max-width: 1050px) {
+	.contact-intro__image {
+		height: 26.5rem;
+	} 
+}
+
+@include viewport-large{
+	.contact-intro__image {
+		margin-top: spacing(component, s);
+		height: 26.5rem;
+	} 
+}
+
+@include viewport-tablet{
+	.contact-intro__image {
+		height: 18.4rem;
+	} 
+}
+

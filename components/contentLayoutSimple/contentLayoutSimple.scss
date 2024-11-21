@@ -1,0 +1,20 @@
+@import "../../assets/styles/settings/_vars.scss";
+@import "../../assets/styles/tools/_mixins.scss";
+@import "../../assets/styles/tools/_helping-functions.scss";
+
+.grid-wrapper {
+	background-color: $color-brown-dawn-pink;
+	padding-top: 13rem;
+}
+
+@include viewport-large {
+	.grid-wrapper {
+		padding-top: 10rem;
+	}
+}
+
+@include viewport-small {
+	.grid-wrapper {
+		padding-top: 8rem;
+	}
+}

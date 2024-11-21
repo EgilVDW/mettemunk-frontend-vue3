@@ -1,0 +1,55 @@
+@import "../../assets/styles/settings/_vars.scss";
+@import "../../assets/styles/tools/helping-functions";
+@import "../../assets/styles/settings/fonts";
+
+.breadcrumbs {
+	padding-top: clamp(1rem, px-to-vw(16), 1.6rem);
+
+	&__list {
+		flex-wrap: wrap;
+	}
+
+	&__link {
+		// overwrite default typography
+		color: $color-black-mine-shaft;
+	}
+
+	&__link.nuxt-link-exact-active {
+		@include font-primary-bold;
+	}
+
+	&__item {
+		position: relative;
+	}
+
+	&__item:not(:first-child) {
+		margin-left: 1.3rem;
+
+		&:before {
+			content: "/";
+			position: absolute;
+			left: -1rem;
+			top: 0;
+			color: $color-black-mine-shaft;
+		}
+	}
+
+	// Dark themed - light colored text
+	&--is-dark-themed &__link {
+		// overwrite default typography
+		color: $color-brown-bridal-health !important;
+	}
+
+	&--is-dark-themed &__item::before {
+		// overwrite default typography
+		color: $color-brown-bridal-health !important;
+	}
+}
+
+.grid-wrapper--light .breadcrumbs__link {
+	color: $color-black-mine-shaft;
+}
+
+.grid-wrapper--light .breadcrumbs__item::before {
+	color: $color-black-mine-shaft;
+}
