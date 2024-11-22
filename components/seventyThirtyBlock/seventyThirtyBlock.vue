@@ -15,13 +15,13 @@
       class="seventy-block__content col-md-3 col-12 flex-horizontal-center flex-vertical-direction"
     >
       <h2 v-if="data.title" class="h2 h2--light c-mb-l c-mt-reset">
-        {{ data.title }} test
+        {{ data.title }}
       </h2>
       <p
         v-if="data.description"
         class="text-default text-default--light c-mt-reset c-mb-xl"
       >
-        {{ data.description }} test
+        {{ data.description }}
       </p>
       <BaseLink class="base-link--primary" :link="data.link" />
     </div>
@@ -30,6 +30,7 @@
 <script setup lang="ts">
 import type { ISeventyThirtyBlock } from "~/interfaces/blocks";
 import { useMediaQuery } from "@vueuse/core";
+
 const isLargeScreen = useMediaQuery("(min-width: 1024px)");
 
 defineProps({
