@@ -1,0 +1,31 @@
+@import "../../assets/styles/settings/_vars.scss";
+
+.contact-item {
+	&__wrapper {
+		background-color: $color-white-rose;
+		height: 100%;
+	}
+
+	&__image {
+		width: 100%;
+		padding-top: 4rem;
+	}
+
+	&__image img {
+		// Override datocms default size
+		width: 17rem !important;
+		height: 17rem !important;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	&__text {
+		padding: 0 4rem 4rem 4rem;
+		text-align: center;
+	}
+
+	&__text-small {
+		font-size: 1.4rem;
+		line-height: 2.4rem;
+	}
+}
