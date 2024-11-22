@@ -30,8 +30,8 @@
               <span>
                 {{ siteLang === "da" ? "DK" : "EN" }}
               </span>
-
-              <svg-icon name="icon-dropdown" />
+              
+              <nuxt-icon name="icon-dropdown" class="header__language-selector icon" filled />
             </button>
 
             <div class="header__language-dropdown">

@@ -48,6 +48,12 @@
     transition: transform $transition;
   }
 
+  &__language-selector .icon {
+    height: 0.6rem;
+    width: 1.1rem;
+    transition: transform $transition;
+  }
+
   &__language-dropdown {
     position: absolute;
     max-height: 0;
