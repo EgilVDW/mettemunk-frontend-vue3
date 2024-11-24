@@ -20,5 +20,14 @@
 		</div>
 	</div>
 </template>
-<script src="./bannerSimple.ts"></script>
+<script setup lang="ts">
+import type { ICmsBannerPage } from "~/interfaces/cms/cmsPages";
+
+defineProps({
+	page: {
+		type: Object as PropType<ICmsBannerPage>,
+		default: null,
+	}
+});
+</script>
 <style lang="scss" src="../banner.scss"></style>

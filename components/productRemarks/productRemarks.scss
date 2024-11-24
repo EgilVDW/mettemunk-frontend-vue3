@@ -1,0 +1,52 @@
+@import "../../assets/styles/settings/vars";
+@import "../../assets/styles/settings/spacing";
+@import "../../assets/styles/tools/mixins";
+
+.remarks {
+	&__item {
+		position: relative;
+		border-bottom: 0.1rem solid $color-brown-camel;
+
+		&--with-icon {
+			padding-right: spacing(layout, xl);
+		}
+	}
+
+	&__item p {
+		margin: 0;
+	}
+
+	&__icon {
+		position: absolute;
+		top: 0;
+		right: 1.5rem;
+		height: 3.6rem;
+		width: 3.6rem;
+	}
+}
+
+@include viewport-medium {
+	.remarks__icon {
+		top: 0rem;
+	}
+	.remarks__item {
+		padding-top: spacing(component, s);
+		
+		.h3.remarks__headline {
+			// overwrite deafault spacing
+			margin-bottom: 1.2rem;
+		}
+
+		p {
+			padding-top: spacing(component, s);
+		}
+
+		&--with-icon {
+			padding-right: spacing(layout, reset);
+		}
+
+		&:nth-last-of-type(1) {
+			margin-bottom: 0;
+		}
+	}
+}

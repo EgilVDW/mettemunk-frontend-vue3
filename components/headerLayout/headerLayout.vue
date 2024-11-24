@@ -56,12 +56,12 @@
         </div>
       </div>
     </div>
-    <HeaderMenu
+    <!-- <HeaderMenu
       v-if="data.menu"
       :class="{ 'is-active': openMenu }"
       :data="data.menu"
       @close-menu="setMenu"
-    />
+    /> -->
   </header>
 </template>
 <script setup lang="ts">

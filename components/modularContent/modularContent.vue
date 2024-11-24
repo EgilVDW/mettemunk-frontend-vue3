@@ -14,11 +14,11 @@
         :unique-id="index + 'seven-thirty-block'"
       />
       <LazyCardListBlock v-if="item.type == 'card_list_block'" :data="item.cards" />
-			<!-- <LazyCardDocumentListBlock v-if="item.type == 'card_list_document_block'" :data="item.cards" />
+			<LazyCardDocumentListBlock v-if="item.type == 'card_list_document_block'" :data="item.cards" />
 			<LazyCardArticleListBlock v-if="item.type == 'card_list_article_block'" :data="item.cards" />
 			<LazyImageBlock v-if="item.type == 'image_block'" :data="item" />
 			<LazyVideoBlock v-if="item.type == 'video_block'" :data="item" />
-			<CustomStructuredText v-if="item.type == 'text_block'" :content="item.text" /> -->
+			<CustomStructuredText v-if="item.type == 'text_block'" :content="item.text" />
     </div>
   </div>
 </template>

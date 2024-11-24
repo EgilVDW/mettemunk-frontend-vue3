@@ -1,0 +1,66 @@
+@import "../../assets/styles/settings/vars";
+@import "../../assets/styles/settings/spacing";
+@import "../../assets/styles/tools/mixins";
+
+.product-anchor {
+	&__description {
+		color: $color-black-mine-shaft;
+	}
+
+	&__link {
+		flex: 1;
+		border-top: unset;
+		border-left: unset;
+		border-right: unset;
+		border-bottom: 0.1rem solid $color-brown-camel;
+		padding: 0.8rem;
+		font-weight: 500;
+		cursor: pointer;
+	}
+
+	&__link-download svg {
+		width: 1.763rem;
+		height: 1.628rem;
+	}
+
+	&__link-anchor svg {
+		height: 1.3rem;
+		width: 1.1rem;
+		transition: all $transition;
+	}
+
+	&__link-anchor {
+		background-color: unset;
+	}
+
+	&__link-anchor:hover svg {
+		transform: translateY(0.3rem);
+	}
+}
+
+
+@include viewport-small {
+	.product-anchor {
+
+		&__link-download,
+		&__link-anchor {
+			display: flex;
+			justify-content: space-between;
+			// overwrite spacing in sides breaking on mobile - due to fullwidth container
+			margin-left: 0 !important;
+			margin-right: 0 !important;
+			margin-bottom: spacing(component, m) !important;
+			
+		}
+
+		&__link-anchor:last-of-type {
+			// overwrite spacing in sides breaking on mobile - due to fullwidth container
+			margin-bottom: spacing(component, reset) !important;
+		}
+
+		&__anchors {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+}

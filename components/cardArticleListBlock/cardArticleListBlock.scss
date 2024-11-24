@@ -1,0 +1,41 @@
+@import "../../assets/styles/settings/vars";
+@import "../../assets/styles/settings/spacing";
+@import "../../assets/styles/tools/mixins";
+@import "../../assets/styles/tools/helping-functions";
+@import "../../assets/styles/settings/fonts";
+
+.article-list {
+	// Remove last row bottom spacing on cards
+	margin-bottom: -4rem;
+}
+
+.card-article {
+	margin-bottom: clamp(3rem, px-to-vw(40), 4rem);
+
+	&__image {
+		margin-bottom: spacing(component, l);
+	}
+
+	&__link svg {
+		height: 1.2rem;
+		width: 1.8rem;
+		fill: $color-brown-caramel;
+		transition: transform $transition;
+	}
+
+	&__link:hover svg {
+		transform: translateX(0.4rem);
+	}
+
+	&__text {
+		// overwrite default
+		font-weight: 500 !important;
+	}
+}
+
+@include viewport-small {
+	.article-list {
+		// Remove last row bottom spacing on cards
+		margin-bottom: -2rem;
+	}
+}
