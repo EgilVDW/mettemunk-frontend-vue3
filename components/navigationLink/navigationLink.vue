@@ -6,7 +6,7 @@
 		:class="{ 'navigation-link--under-line': underLine }"
 	>
 		{{ text }}
-		<nuxt-icon v-if="icon" name="icon-arrow" class="navigation-link__icon c-ml-s" filled />
+		<nuxt-icon v-if="icon" name="icon-arrow" class="navigation-link__icon icon c-ml-s" filled />
 	</NuxtLink>
 	<a
 		v-else
@@ -16,7 +16,7 @@
 		target="_blank"
 	>
 		{{ text }}
-		<nuxt-icon v-if="icon" class="navigation-link__icon c-ml-s" name="icon-arrow" filled />
+		<nuxt-icon v-if="icon" class="navigation-link__icon icon c-ml-s" name="icon-arrow" filled />
 	</a>
 </template>
 <script setup lang="ts">

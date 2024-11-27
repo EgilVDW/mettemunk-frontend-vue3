@@ -18,7 +18,7 @@
 					:to="data.link.url"
 				>
 					{{ data.link.text }}
-					<nuxt-icon name="icon-arrow" class="navigation-link__icon c-ml-s" filled />
+					<nuxt-icon name="icon-arrow" class="navigation-link__icon icon c-ml-s" filled />
 				</NuxtLink>
 			</div>
 			<div v-else>
@@ -28,10 +28,7 @@
 					:to="data.link.url"
 				>
 					<h2 class="text-cta text-cta--light c-my-l c-ml-l">{{ data.title }}</h2>
-					<span class="navigation-link__icon icon">
-
-						<nuxt-icon name="icon-arrow" class=" c-ml-s" filled />
-					</span>
+					<nuxt-icon name="icon-arrow" class="navigation-link__icon icon c-ml-s" filled />
 				</NuxtLink>
 			</div>
 		</div>
@@ -41,7 +38,7 @@
 import type { ICardBlock } from "~/interfaces/blocks";
 import { useMediaQueryCustom } from "~/composable/useMediaQueryCustom";
 
-const { isLargeScreen} = useMediaQueryCustom() // ???
+const { isLargeScreen } = useMediaQueryCustom();
 
 defineProps({
 	data: {
