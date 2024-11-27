@@ -56,12 +56,12 @@
         </div>
       </div>
     </div>
-    <!-- <HeaderMenu
+    <HeaderMenu
       v-if="data.menu"
       :class="{ 'is-active': openMenu }"
       :data="data.menu"
       @close-menu="setMenu"
-    /> -->
+    />
   </header>
 </template>
 <script setup lang="ts">
@@ -83,6 +83,7 @@ const openMenu = ref(false);
 const siteLang = ref(config.public.CULTURE);
 const danishBaseUrl = ref(config.public.DANISH_BASEURL);
 const englishBaseUrl = ref(config.public.ENGLISH_BASEURL);
+const closeDropdownsVal = useState("closeDropdownsVal", () => false);
 
 onMounted(() => {
   setMenuTheme();
@@ -132,9 +133,9 @@ onUnmounted(() => {
 });
 
 const setMenu = () => {
-  //   if(openMenu.value) {
-  // 	$root.$emit("close-dropdowns");
-  //   }
+    if(openMenu.value) {
+      closeDropdownsVal.value = true;
+    }
 
   openMenu.value = !openMenu.value;
 };
@@ -148,7 +149,8 @@ watch(router.currentRoute, () => {
   openMenu.value = false;
 
   // nuxt global emitter research
-  //this.$root.$emit("close-dropdowns");
+  closeDropdownsVal.value = true;
+
 });
 </script>
 <style lang="scss" src="./headerLayout.scss"></style>

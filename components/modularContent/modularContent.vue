@@ -18,7 +18,7 @@
 			<LazyCardArticleListBlock v-if="item.type == 'card_list_article_block'" :data="item.cards" />
 			<LazyImageBlock v-if="item.type == 'image_block'" :data="item" />
 			<LazyVideoBlock v-if="item.type == 'video_block'" :data="item" />
-			<CustomStructuredText v-if="item.type == 'text_block'" :content="item.text" />
+			<LazyCustomStructuredText v-if="item.type == 'text_block'"  :content="item.text" :unique-key="id + index" />
     </div>
   </div>
 </template>
@@ -32,6 +32,10 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  id: {
+		type: String,
+		required: true
+	}
 });
 </script>
 <style lang="scss" src="./modularContent.scss"></style>

@@ -1,6 +1,6 @@
 <template>
 	<main v-if="page">
-		<BannerSimple :page="page" />
+		<BannerBannerSimple :page="page" />
 		<ContentLayout :light-theme="true">
 			<template #breadcrumbs>
 				<div class="row">
@@ -16,7 +16,7 @@
 				</div>
 				<div class="col-xl-7 article-content">
 					<h2>{{ page.title }}</h2>
-					<ModularContent v-if="page.modularContent" :data="page.modularContent" :less-spacing="true" />
+					<ModularContent v-if="page.modularContent" :data="page.modularContent" :id="page.id" :less-spacing="true" />
 				</div>
 			</div>
 		</ContentLayout>
@@ -36,7 +36,8 @@ const props = defineProps({
 	breadcrumbs: {
 		type: Array as PropType<ILink[]>,
 		required: true,
-	}
+	},
+	
 });
 
 useHead(() => {

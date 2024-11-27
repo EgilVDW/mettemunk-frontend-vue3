@@ -7,6 +7,7 @@
 					v-if="data.description"
 					class="c-mb-xl product-anchor__description"
 					:content="data.description"
+					:unique-key="data.title + 'productAnchor'"
 				/>
 			</div>
 		</Portal>
@@ -39,14 +40,21 @@
 	</div>
 </template>
 <script setup lang="ts">
+import { useGetDictionary } from "~/composable/useGetDictionary";
 import { useMediaQueryCustom } from "~/composable/useMediaQueryCustom";
 import type { ICmsDictionary } from "~/interfaces/cms/cmsBase";
 import type { IAnchorSection } from "~/interfaces/components";
-// import { dictionaryStore } from "~/store"; // ???
 
-const { isLargeScreen } = useMediaQueryCustom();
+const {getDictionaries} = useGetDictionary() 
 
-const dictionary: ICmsDictionary | null = dictionaryStore.dictionaries; // ???
+const {data: dictionary} = await useAsyncData("dictionary", async () => {
+	const d = getDictionaries()
+	if(d) {
+		return d;
+	} 
+	return null;
+
+})
 
 defineProps({
 	data: {

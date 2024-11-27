@@ -28,7 +28,10 @@
 					:to="data.link.url"
 				>
 					<h2 class="text-cta text-cta--light c-my-l c-ml-l">{{ data.title }}</h2>
-					<nuxt-icon name="icon-arrow" class="navigation-link__icon c-ml-s" filled />
+					<span class="navigation-link__icon icon">
+
+						<nuxt-icon name="icon-arrow" class=" c-ml-s" filled />
+					</span>
 				</NuxtLink>
 			</div>
 		</div>

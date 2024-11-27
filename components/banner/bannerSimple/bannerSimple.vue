@@ -6,6 +6,7 @@
 				v-else-if="page.bannerImage.responsiveImage"
 				class="banner__image"
 				:data="page.bannerImage.responsiveImage"
+				layout="responsive"
 			/>
 		</div>
 		<div class="main-grid banner__content-wrapper">

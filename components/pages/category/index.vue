@@ -1,6 +1,6 @@
 <template>
 	<main v-if="page">
-		<BannerSimple :page="page" />
+		<BannerBannerSimple :page="page" />
 		<ContentLayout>
 			<template #breadcrumbs>
 				<Breadcrumbs :data="breadcrumbs" :is-dark="true" />

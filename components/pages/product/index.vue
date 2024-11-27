@@ -1,17 +1,17 @@
 <template>
 	<main v-if="page">
-		<ContentLayoutSimple>
+		 <ContentLayoutSimple>
 			<template #breadcrumb>
 				<Breadcrumbs :data="breadcrumbs" />
 			</template>
 			<div class="row l-mb-l">
-				<PortalTarget v-if="!isLargeScreen" name="product-text"></PortalTarget>
+				<!-- <PortalTarget v-if="!isLargeScreen" name="product-text"></PortalTarget> -->
 				<ProductSlider v-if="page.images" :data="page.images" />
-				<ProductAnchor :data="anchorSection" />
+				<!-- <ProductAnchor :data="anchorSection" /> -->
 			</div>
-			<LazyProductRemarks v-if="page.labels" :data="page.labels" />
-			<LazyProductDownloads v-if="page.downloads" :data="page.downloads" />
-		</ContentLayoutSimple>
+			<LazyProductRemarks v-if="page.labels" :data="page.labels" :id="page.id" />
+			<LazyProductDownloads v-if="page?.downloads" :data="page.downloads" />
+		</ContentLayoutSimple> 
 	</main>
 </template>
 <script setup lang="ts">

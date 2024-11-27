@@ -3,7 +3,7 @@
 		<div class="menu__overlay" @click="closeMenu"></div>
 		<div class="menu__section">
 			<!-- Desktop  -->
-			<div v-if="$mq !== 'mobile'" class="menu__links flex flex-wrap">
+			<div v-if="isLargeScreen" class="menu__links flex flex-wrap">
 				<ul v-for="x in data" :key="x.title" class="menu__links-category c-pb-xl reset-ul">
 					<!-- Category -->
 					<li class="menu__primary-link h4">
@@ -59,7 +59,11 @@
 </template>
 <script setup lang="ts">
 import type { IParentChildrenLinkCollection } from "~/interfaces/blocks";
+import { useMediaQueryCustom } from "~/composable/useMediaQueryCustom";
 
+const { isLargeScreen} = useMediaQueryCustom();
+
+const emit = defineEmits(["close-menu"]);
 defineProps({
 	 data: {
 		type: Array as PropType<IParentChildrenLinkCollection[]>,
@@ -67,25 +71,33 @@ defineProps({
 	},
 });
 
-	const activeIndex: number | null = null;
-	const resetValue: string = "0px";
+	const activeIndex = ref<number | null>(null);
+	const resetValue= ref<string>("0px");
+	const dropdown = ref();
+	const closeDropdownsVal = useState("closeDropdownsVal")
 
 	onMounted(() =>{
-		this.$root.$on("close-dropdowns", this.closeDropdowns);
+		// this.$root.$on("close-dropdowns", closeDropdowns());
 	});
 
+	watch(closeDropdownsVal, () => {
+		if(closeDropdownsVal.value = true) {
+			closeDropdowns()
+			closeDropdownsVal.value = false;
+		}
+	})
+
 	const closeMenu = () => {
-		this.$emit("close-menu");
+		emit("close-menu");
 	}
 
 	const setDropdown = (index: number) => {
-		const el = this.$refs.dropdown as HTMLElement[];
-		const closeAllDropdowns = this.activeIndex === index;
-
+		const el = dropdown.value as HTMLElement[];
+		const closeAllDropdowns = activeIndex.value === index
 		el?.forEach((item, i) => {
 			const dropdown = item.querySelector(".menu-mobile__dropdown") as HTMLElement;
 			if (index !== i || closeAllDropdowns) {
-				dropdown.style.maxHeight = this.resetValue;
+				dropdown.style.maxHeight = resetValue.value;
 			} else {
 				const childEl = dropdown.firstChild as HTMLElement;
 				const height = childEl ? childEl.clientHeight : 250;
@@ -93,17 +105,17 @@ defineProps({
 			}
 		});
 
-		this.activeIndex = closeAllDropdowns ? null : index;
+		activeIndex.value = closeAllDropdowns ? null : index;
 	}
 
 	const closeDropdowns = () => {
-		const el = this.$refs.dropdown as HTMLElement[];
+		const el = dropdown.value as HTMLElement[];
 		el?.forEach((item) => {
 			const dropdown = item.querySelector(".menu-mobile__dropdown") as HTMLElement;
-			dropdown.style.maxHeight = this.resetValue;
+			dropdown.style.maxHeight = resetValue.value;
 		});
 
-		this.activeIndex = null;
+		activeIndex.value = null;
 	};
 
 </script>

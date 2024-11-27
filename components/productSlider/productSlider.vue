@@ -19,22 +19,20 @@
 
 		<div class="product-slider__thumb-section">
 			<Hooper ref="hooperNavigation" group="group1" :items-to-show="4" @slide="setCurrentSlide">
-				<template v-for="(item, index) in data">
-					<Slide v-if="item.responsiveImage || item.video" :key="index" class="product-slider__thumb-image">
+					<Slide  v-for="(item, index) in data" :key="index" class="product-slider__thumb-image">
 						<!-- Image thumbnail -->
 						<button v-if="item.responsiveImage" @click="setSlide(index)">
-							<DatocmsImage class="product-slider__thumb-wrapper" :data="item.responsiveImage" />
+							<DatocmsImage v-if="item.responsiveImage" class="product-slider__thumb-wrapper" :data="item.responsiveImage" />
 						</button>
 
 						<!-- Video thumbnail -->
 						<button v-else-if="item.video" class="product-slider__thumb-wrapper" @click="setSlide(index)">
 							<img :src="item.video.thumbnailUrl" />
 							<div class="product-slider__thumb-video">
-								<svg-icon name="icon-play"></svg-icon>
+								<!-- <svg-icon name="icon-play"></svg-icon> -->
 							</div>
 						</button>
 					</Slide>
-				</template>
 
 				<HooperPagination slot="hooper-addons" class="product-slider__pagination flex-center-center" />
 				<HooperNavigation slot="hooper-addons" class="product-slider__navigation">
@@ -46,8 +44,8 @@
 	</div>
 </template>
 <script setup lang="ts">
-// import { Hooper, Slide, Navigation as HooperNavigation, Pagination as HooperPagination } from "hooper"; // ???
-// import "hooper/dist/hooper.css"; // ???
+import { Hooper, Slide, Navigation as HooperNavigation, Pagination as HooperPagination } from '@wattanx/hooper-vue3';
+import '@wattanx/hooper-vue3/css';
 import type { IImage } from "~/interfaces/ui";
 
 defineProps({
@@ -57,15 +55,15 @@ defineProps({
 	}
 });
 
-const currentSlide = 0;
+const currentSlide = ref(0);
+const hooperNavigation = ref();
 
 const setSlide = (id: number) => {
-	// @ts-ignore
-	this.$refs.hooperNavigation.slideTo(id);
+	hooperNavigation.value.slideTo(id);
 };
 
 const setCurrentSlide = (e: { currentSlide: number }) => {
-	this.currentSlide = e.currentSlide;
+	currentSlide.value = e.currentSlide;
 }
 </script>
 <style lang="scss" src="./productSlider.scss"></style>

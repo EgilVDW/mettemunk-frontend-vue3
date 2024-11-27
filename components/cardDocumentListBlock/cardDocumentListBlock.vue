@@ -2,7 +2,7 @@
 	<ul class="document-list reset-ul row">
 		<li v-for="item in data" :key="item.title" class="document-card col-lg-4 col-md-6 col-12">
 			<div class="document-card__wrapper flex flex-vertical-direction">
-				<DatocmsImage v-if="item.image" class="document-card__image" :data="item.image.responsiveImage" />
+				<DatocmsImage v-if="item.image" class="document-card__image" :data="item.image.responsiveImage" layout="responsive" />
 				<div
 					v-if="isLargeScreen"
 					class="document-card__text-content flex-vertical-direction flex-space-between"
