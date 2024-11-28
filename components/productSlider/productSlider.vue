@@ -2,18 +2,16 @@
 	<div class="product-slider col-lg-7">
 		<div class="product-slider__image-section c-mb-l">
 			<Hooper group="group1">
-				<template v-for="(item, index) in data">
-					<Slide v-if="item.responsiveImage || item.video" :key="index" class="product-slider__image">
-						<DatocmsImage v-if="item.responsiveImage" :data="item.responsiveImage" />
+				<Slide v-for="(item, index) in data" :key="index" class="product-slider__image">
+					<DatocmsImage v-if="item.responsiveImage" :data="item.responsiveImage" />
 
-						<!-- Rerender video component to reset video when sliding on/off -->
-						<LazyMuxVideo
-							v-else-if="item.video && index === currentSlide"
-							:video-item="item.video"
-							:autoplay="false"
-						/>
-					</Slide>
-				</template>
+					<!-- Rerender video component to reset video when sliding on/off -->
+					<LazyMuxVideo
+						v-else-if="item.video && index === currentSlide"
+						:video-item="item.video"
+						:autoplay="false"
+					/>
+				</Slide>
 			</Hooper>
 		</div>
 

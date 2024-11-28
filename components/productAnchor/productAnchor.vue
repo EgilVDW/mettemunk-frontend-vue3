@@ -45,7 +45,8 @@ import { useMediaQueryCustom } from "~/composable/useMediaQueryCustom";
 import type { ICmsDictionary } from "~/interfaces/cms/cmsBase";
 import type { IAnchorSection } from "~/interfaces/components";
 
-const {getDictionaries} = useGetDictionary() 
+const {getDictionaries} = useGetDictionary();
+const { isLargeScreen } = useMediaQueryCustom();
 
 const {data: dictionary} = await useAsyncData("dictionary", async () => {
 	const d = getDictionaries()
@@ -54,7 +55,7 @@ const {data: dictionary} = await useAsyncData("dictionary", async () => {
 	} 
 	return null;
 
-})
+});
 
 defineProps({
 	data: {

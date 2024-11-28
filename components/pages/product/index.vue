@@ -7,7 +7,7 @@
 			<div class="row l-mb-l">
 				<!-- <PortalTarget v-if="!isLargeScreen" name="product-text"></PortalTarget> -->
 				<ProductSlider v-if="page.images" :data="page.images" />
-				<!-- <ProductAnchor :data="anchorSection" /> -->
+				<ProductAnchor :data="anchorSection" />
 			</div>
 			<LazyProductRemarks v-if="page.labels" :data="page.labels" :id="page.id" />
 			<LazyProductDownloads v-if="page?.downloads" :data="page.downloads" />
