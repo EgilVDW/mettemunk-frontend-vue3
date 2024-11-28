@@ -12,7 +12,7 @@
 						class="downloads__link flex flex-space-between flex-vertical-center"
 					>
 						<h3 v-if="item.title" class="text-small c-my-reset">{{ item.title }}</h3>
-						<nuxt-icon name="icon-download" class="downloads__icon" />
+						<nuxt-icon name="icon-download" class="downloads__icon" filled />
 					</a>
 				</li>
 			</ul>

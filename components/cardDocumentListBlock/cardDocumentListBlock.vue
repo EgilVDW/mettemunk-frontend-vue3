@@ -18,7 +18,7 @@
 						target="_blank"
 					>
 						ÅBEN KATALOG ONLINE
-						<nuxt-icon name="icon-external" />
+						<nuxt-icon name="icon-external" filled />
 					</a>
 				</div>
 				<div v-else>
@@ -29,7 +29,7 @@
 						target="_blank"
 					>
 						<h2 class="text-cta text-cta--light c-my-l c-ml-l">ÅBEN KATALOG ONLINE</h2>
-						<nuxt-icon name="icon-external" />
+						<nuxt-icon name="icon-external" filled />
 					</a>
 				</div>
 			</div>

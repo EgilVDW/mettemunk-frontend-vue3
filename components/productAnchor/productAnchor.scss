@@ -23,10 +23,20 @@
 		height: 1.628rem;
 	}
 
+	&__link-download .icon {
+		width: 1.763rem;
+		height: 1.628rem;
+	}
+
 	&__link-anchor svg {
 		height: 1.3rem;
 		width: 1.1rem;
 		transition: all $transition;
+	}
+
+	&__link-anchor .icon {
+		height: 1.3rem;
+		width: 1.1rem;
 	}
 
 	&__link-anchor {

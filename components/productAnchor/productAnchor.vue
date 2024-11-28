@@ -18,7 +18,7 @@
 				target="_blank"
 				class="product-anchor__link product-anchor__link-download text-highlighted flex-center-center c-mb-xl"
 				>{{ dictionary.productOpenFile.toUpperCase() }}
-				<nuxt-icon name="icon-external" class="c-ml-s" />
+				<nuxt-icon name="icon-external" class="product-anchor__link-download icon c-ml-s" />
 			</a>
 			<div class="product-anchor__anchors flex">
 				<button
@@ -26,14 +26,14 @@
 					@click="scrollToSection('#remarks')"
 				>
 					{{ dictionary.productToLabels.toUpperCase() }}
-					<nuxt-icon name="icon-anchorlink" class="c-ml-s" />
+					<nuxt-icon name="icon-anchorlink" class="product-anchor__link-anchor icon c-ml-s" />
 				</button>
 				<button
 					class="product-anchor__link product-anchor__link product-anchor__link-anchor c-ml-l text-highlighted flex-center-center"
 					@click="scrollToSection('#downloads')"
 				>
 					{{ dictionary.productToDownloads.toUpperCase() }}
-					<nuxt-icon name="icon-anchorlink" class="c-ml-s" />
+					<nuxt-icon name="icon-anchorlink" class="product-anchor__link-anchor icon c-ml-s" />
 				</button>
 			</div>
 		</div>

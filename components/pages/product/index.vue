@@ -38,14 +38,11 @@ useHead(() => {
 	return generateHead(currentRoute.value.path, props.page);
 });
 
-const anchorSection = () => {
-	const title = props.page?.title;
-	const document = props.page?.document;
-	const description = props.page?.description;
+const anchorSection = computed(() => {
 	return {
-		title,
-		document,
-		description,
+		title: props.page?.title,
+		document: props.page?.document,
+		description: props.page?.description,
 	};
-};
+});
 </script>
