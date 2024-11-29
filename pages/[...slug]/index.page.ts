@@ -272,12 +272,5 @@ export default defineNuxtComponent({
       }
     });
 
-    if(error.value) {
-      throw createError({statusCode: 404, fatal: true})
-    }
-
-    return {
-      data,
-    };
   },
 });
