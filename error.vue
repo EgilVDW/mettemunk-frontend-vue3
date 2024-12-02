@@ -10,7 +10,7 @@
 import * as cmsHelper from '~/resources/datoCmsHelper';
 import type { INotFoundPage } from '~/interfaces/pages';
 
-const props = defineProps({
+defineProps({
     page: {
         type: Object as PropType<INotFoundPage>,
         default: null,
