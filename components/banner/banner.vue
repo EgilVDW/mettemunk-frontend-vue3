@@ -40,14 +40,14 @@
             class="banner__anchor-wrapper"
             @click="scrollToSection"
           >
-            <!-- <svg-icon class="banner__anchor" name="icon-arrow-long" /> -->
+            <nuxt-icon class="banner__anchor" name="icon-arrow-long" filled />
           </button>
           <button
             v-else
             class="banner__anchor-wrapper banner__anchor-wrapper--mobile"
             @click="scrollToSection"
           >
-            <!-- <svg-icon class="banner__anchor" name="icon-arrow-light-vertical" /> -->
+            <nuxt-icon class="banner__anchor" name="icon-arrow-light-vertical" filled />
           </button>
         </div>
       </div>
