@@ -97,6 +97,7 @@ const getBannerVideo = `bannerVideo {
 const getModularContent = `modularContent {
 	... on SeventyThirtyBlockRecord {
 	  title
+	  id
 	  direction
 	  description
 	  link {
@@ -134,6 +135,7 @@ const getModularContent = `modularContent {
 	  _modelApiKey
 	}
 	... on CardListBlockRecord {
+	  id
 	  cards {
 		title
 		description
@@ -173,6 +175,7 @@ const getModularContent = `modularContent {
 	  _modelApiKey
 	}
 	... on CardListDocumentBlockRecord {
+	  id
 	  _modelApiKey
 	  cards {
 		title
@@ -190,6 +193,7 @@ const getModularContent = `modularContent {
 	  }
 	}
 	... on CardListArticleBlockRecord {
+	  id
 	  _modelApiKey
 	  cards {
 		id

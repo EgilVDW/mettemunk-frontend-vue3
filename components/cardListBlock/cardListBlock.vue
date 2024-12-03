@@ -1,5 +1,5 @@
 <template>
-	<ul class="card-list reset-ul row" :class="{ 'l-pb-l': !notModular }">
+	<ul v-if="data" class="card-list reset-ul row" :class="{ 'l-pb-l': !notModular }">
 		<CardItemBlock v-for="card in data" :key="card.id" :data="card" />
 	</ul>
 </template>

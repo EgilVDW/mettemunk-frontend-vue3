@@ -10,12 +10,11 @@ import type {
 } from "~/interfaces/pages";
 import * as cmsHelper from "../../resources/datoCmsHelper";
 import type { ICardBlock } from "~/interfaces/blocks";
-import type { RefSymbol } from "@vue/reactivity";
 
 export default defineNuxtComponent({
-  setup() {
+  async setup() {
     const { currentRoute } = useRouter();
-    const { data, error } = useAsyncData("page",  async () => {
+    const { data, error } = await useAsyncData(`${currentRoute.value.fullPath}-page`,  async () => {
       // await dictionaryStore.loadDictionaries();
       // await cmsPagesStore.loadPages();
       const cmsPagesStore = await cmsHelper.GetAllPages();
@@ -38,10 +37,10 @@ export default defineNuxtComponent({
       if (currentPage == null) {
         throw new Error("404");
       }
-
+      console.log(currentPage._modelApiKey);
       if (currentPage._modelApiKey === "front") {
+      
         const cmsPage = await cmsHelper.GetFrontPage();
-        console.log(await mapper.mapLink(cmsPage.bannerLink[0]));
         const mapped: IFrontPage = {
           id: cmsPage.id,
           type: cmsPage._modelApiKey,

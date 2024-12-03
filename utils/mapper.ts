@@ -42,7 +42,7 @@ import * as cmsHelper from "~/resources/datoCmsHelper";
 
 export async function getUrl(id: string): Promise<string> {
   const pages = (await cmsHelper.GetAllPages()) as any;
-  const page = pages.find((x) => x.id === id);
+  const page = pages.find((x: any) => x.id === id);
 
   if (page != null) {
     return page.path;
@@ -129,6 +129,7 @@ export async function mapSeventyThirtyBlock(
   block: ICmsSeventyThirtyBlock
 ): Promise<ISeventyThirtyBlock> {
   return {
+    id: block.id,
     type: block._modelApiKey,
     title: block.title,
     description: block.description,
@@ -140,6 +141,7 @@ export async function mapSeventyThirtyBlock(
 
 export async function mapCardBlock(block: ICmsCardBlock): Promise<ICardBlock> {
   return {
+    id: block.id,
     title: block.title,
     description: block.description,
     image: mapImage(block.image),
@@ -151,6 +153,7 @@ export function mapCardDocumentBlock(
   block: ICmsCardDocumentBlock
 ): ICardDocumentBlock {
   return {
+    id: block.id,
     title: block.title,
     description: block.description,
     image: mapImage(block.image),
@@ -162,6 +165,7 @@ export async function mapCardArticleBlock(
   block: ICmsCardArticleBlock
 ): Promise<ICardArticleBlock> {
   return {
+    id: block.id,
     image: mapImage(block.bannerImage),
     link: {
       url: await getUrl(block.id),
@@ -181,9 +185,10 @@ export async function mapCardListBlock(
   );
 
   return {
+    id: block.id,
     type: block._modelApiKey,
     cards: await Promise.all(
-      block.cards.map(async (e) => await mapCardBlock(e))
+      await block.cards.map(async (e) => await mapCardBlock(e))
     ),
   };
 }
@@ -196,6 +201,7 @@ export function mapCardDocumentListBlock(
   );
 
   return {
+    id: block.id,
     type: block._modelApiKey,
     cards: block.cards.map((e) => mapCardDocumentBlock(e)),
   };
@@ -209,6 +215,7 @@ export async function mapCardArticleListBlock(
   );
 
   return {
+    id: block.id,
     type: block._modelApiKey,
     cards: await Promise.all(
       block.cards.map(async (e) => await mapCardArticleBlock(e))
@@ -218,6 +225,7 @@ export async function mapCardArticleListBlock(
 
 export function mapTextBlock(block: ICmsTextBlock): ITextBlock {
   return {
+    id: block.id,
     type: block._modelApiKey,
     text: block.text,
   };
@@ -225,6 +233,7 @@ export function mapTextBlock(block: ICmsTextBlock): ITextBlock {
 
 export function mapImageBlock(block: ICmsImageBlock): IImageBlock {
   return {
+    id: block.id,
     type: block._modelApiKey,
     image: mapImage(block.image),
     caption: block.caption,
@@ -233,6 +242,7 @@ export function mapImageBlock(block: ICmsImageBlock): IImageBlock {
 
 export function mapVideoBlock(block: ICmsVideoBlock): IVideoBlock {
   return {
+    id: block.id,
     type: block._modelApiKey,
     video: mapVideo(block.video),
     caption: block.caption,
@@ -261,7 +271,7 @@ export async function mapModularContent(
 ): Promise<IModularContent[]> {
   const list: IModularContent[] = [];
 
-  content.forEach(async (data) => {
+  await content.forEach(async (data) => {
     if (data._modelApiKey === "seventy_thirty_block") {
       list.push(await mapSeventyThirtyBlock(data as ICmsSeventyThirtyBlock));
     }

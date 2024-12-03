@@ -97,7 +97,7 @@ const setMenuTheme = () => {
     if (el) {
       styleBackground.value = "is-dark-theme";
       const isArticlePage = document.querySelector(
-        ".grid-wrapper--light "
+        ".grid-wrapper--light"
       ) as HTMLElement;
       if (isArticlePage) {
         styleBackground.value = "is-light-theme";
@@ -145,12 +145,13 @@ const setLanguageDropdown = () => {
 };
 
 watch(router.currentRoute, () => {
-  setMenuTheme();
   openMenu.value = false;
-
   // nuxt global emitter research
   closeDropdownsVal.value = true;
-
+  setTimeout(() => {
+    setMenuTheme();
+  }, 200)
 });
+
 </script>
 <style lang="scss" src="./headerLayout.scss"></style>

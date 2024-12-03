@@ -76,10 +76,6 @@ defineProps({
 	const dropdown = ref();
 	const closeDropdownsVal = useState("closeDropdownsVal")
 
-	onMounted(() =>{
-		// this.$root.$on("close-dropdowns", closeDropdowns());
-	});
-
 	watch(closeDropdownsVal, () => {
 		if(closeDropdownsVal.value = true) {
 			closeDropdowns()

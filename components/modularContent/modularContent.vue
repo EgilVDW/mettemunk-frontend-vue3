@@ -2,7 +2,7 @@
   <div class="modular-content">
     <div
       v-for="(item, index) in data"
-      :key="'seven-thirty' + index"
+      :key="'seven-thirty' + index + item.id"
       :class="[
         { 'l-mb-l': index !== data.length - 1 && !lessSpacing },
         { 'l-mb-s': index !== data.length - 1 && lessSpacing },
@@ -19,6 +19,7 @@
 			<LazyImageBlock v-if="item.type == 'image_block'" :data="item" />
 			<LazyVideoBlock v-if="item.type == 'video_block'" :data="item" />
 			<LazyCustomStructuredText v-if="item.type == 'text_block'"  :content="item.text" :unique-key="id + index" />
+     
     </div>
   </div>
 </template>

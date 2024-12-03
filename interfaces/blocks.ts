@@ -31,6 +31,7 @@ export interface ICardBlock {
 	description: string;
 	image: IImage;
 	link: ILink;
+	id: string;
 }
 
 export interface ICardDocumentBlock {
@@ -38,41 +39,50 @@ export interface ICardDocumentBlock {
 	description: string;
 	image: IImage;
 	file: IFile | null;
+	id: string;
 }
 
 export interface ICardArticleBlock {
 	image: IImage;
 	link: ILink;
+	id: string;
 }
 
 export interface ICardListBlock extends IModularContent, ITyped {
 	cards: ICardBlock[];
+	id: string;
 }
 
 export interface ICardDocumentListBlock extends IModularContent, ITyped {
 	cards: ICardDocumentBlock[];
+	id: string;
 }
 
 export interface ICardArticleListBlock extends IModularContent, ITyped {
 	cards: ICardArticleBlock[];
+	id: string;
 }
 
 export interface ITextBlock extends IModularContent, ITyped {
 	text: string;
+	id: string;
 }
 
 export interface IImageBlock extends IModularContent, ITyped {
 	image: IImage;
 	caption: string;
+	id: string;
 }
 
 export interface IVideoBlock extends IModularContent, ITyped {
 	video: IVideo | null;
 	caption: string;
+	id: string;
 }
 
 export interface ISeventyThirtyBlock extends IModularContent, ITyped {
 	title: string;
+	id: string;
 	description: string;
 	image: IImage;
 	link: ILink | null;
