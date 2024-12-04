@@ -102,4 +102,13 @@ const appearHook = (el: HTMLDivElement) => {
   height: 100%;
   margin-bottom: 0;
 }
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
 </style>

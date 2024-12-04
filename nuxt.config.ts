@@ -20,6 +20,9 @@ export default defineNuxtConfig({
         href: "https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap",
       }]
     },
+    pageTransition: {
+      mode: 'out-in',
+    },
   },
   runtimeConfig: {
     public: {
