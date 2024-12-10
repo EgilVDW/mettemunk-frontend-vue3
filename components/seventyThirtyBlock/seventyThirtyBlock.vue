@@ -14,9 +14,11 @@
     <div
       class="seventy-block__content col-md-3 col-12 flex-horizontal-center flex-vertical-direction"
     >
-      <h2 v-if="data.title" class="h2 h2--light c-mb-l c-mt-reset">
-        {{ data.title }}
-      </h2>
+      <Teleport :to="'seventy-thirty-mobile-' + data.title" :disabled="!isMobile">
+        <h2 v-if="data.title" class="h2 h2--light c-mb-l c-mt-reset">
+          {{ data.title }}
+        </h2>
+      </Teleport>
       <p
         v-if="data.description"
         class="text-default text-default--light c-mt-reset c-mb-xl"
@@ -29,9 +31,9 @@
 </template>
 <script setup lang="ts">
 import type { ISeventyThirtyBlock } from "~/interfaces/blocks";
-import { useMediaQuery } from "@vueuse/core";
+import { useMediaQueryCustom } from "~/composable/useMediaQueryCustom";
 
-const isLargeScreen = useMediaQuery("(min-width: 1024px)");
+const { isMobile } = useMediaQueryCustom();
 
 defineProps({
   data: {

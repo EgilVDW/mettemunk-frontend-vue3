@@ -4,7 +4,7 @@
 			<div class="document-card__wrapper flex flex-vertical-direction">
 				<DatocmsImage v-if="item.image" class="document-card__image" :data="item.image.responsiveImage" layout="responsive" />
 				<div
-					v-if="isLargeScreen"
+					v-if="!isMobile && isClient"
 					class="document-card__text-content flex-vertical-direction flex-space-between"
 				>
 					<div>
@@ -40,7 +40,7 @@
 import { useMediaQueryCustom } from "~/composable/useMediaQueryCustom";
 import type { ICardDocumentBlock } from "~/interfaces/blocks";
 
-const { isLargeScreen } = useMediaQueryCustom();
+const { isMobile, isClient } = useMediaQueryCustom();
 
 defineProps({
 	data: {

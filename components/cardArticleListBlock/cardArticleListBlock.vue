@@ -16,7 +16,7 @@
 							>
 								{{ item.link.text }}
 							</p>
-							<nuxt-icon name="icon-arrow" class="c-ml-s" />
+							<nuxt-icon name="icon-arrow" class="c-ml-s" filled />
 						</div>
 					</NuxtLink>
 					<br />

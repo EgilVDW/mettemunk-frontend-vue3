@@ -7,6 +7,8 @@
 </template>
 
 <script setup lang="ts">
+import IconLogo from "~/assets/icons/icon-logo-border.svg";
+
 defineProps({
     args: {
         type: Boolean,
