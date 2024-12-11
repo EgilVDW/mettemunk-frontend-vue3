@@ -1,13 +1,6 @@
 <template>
   <div id="app">
-    <!-- <transition
-      appear
-      :css="false"
-      @before-appear="beforeAppearHook"
-      @after-appear="appearHook"
-    >
-      <Loader />
-    </transition> -->
+    <Loader :is-hidden="isHidden" />
     <HeaderLayout v-if="data && data.header" :data="data.header" />
     <NuxtPage />
     <FooterLayout
@@ -24,6 +17,8 @@ import * as mapper from "~/utils/mapper";
 // eslint-disable-next-line import/order
 import * as cmsHelper from "../resources/datoCmsHelper";
 import { gsap } from "gsap";
+
+const isHidden = ref(false);
 
 const mapHeader = async (cmsHeader: ICmsHeader): Promise<IHeader> => {
   return {
@@ -82,15 +77,9 @@ const gsapOnLoadHandler = (target: HTMLDivElement) => {
   return { initState, toState };
 };
 
-// initial state (set)
-const beforeAppearHook = (el: HTMLDivElement) => {
-  gsapOnLoadHandler(el).initState();
-};
-
-// transtion state (to)
-const appearHook = (el: HTMLDivElement) => {
-  gsapOnLoadHandler(el).toState();
-};
+onMounted(() => {
+  isHidden.value = true;
+})
 </script>
 <style >
 .nuxt-icon {

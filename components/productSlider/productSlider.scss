@@ -56,8 +56,9 @@ $gap: spacing(component, s);
 
 	// thumbnail
 	&__thumb-section {
-		padding-left: 7.5rem;
-		padding-right: 7.5rem;
+		display: grid;
+		grid-template-columns: 7.5rem auto 7.5rem;
+		overflow-x: hidden;
 	}
 
 	&__thumb-image {
@@ -81,6 +82,9 @@ $gap: spacing(component, s);
 		position: relative;
 		height: 100%;
 		overflow: visible !important;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 
 	&__thumb-video svg {
@@ -171,6 +175,19 @@ $gap: spacing(component, s);
 
 	&__navigation button:last-of-type {
 		right: -4.3rem;
+	}
+
+	button {
+		border: none;
+		background-color: transparent;
+	}
+
+	&__next-button, &__prev-button {
+		padding-left: 2rem;
+	}
+	
+	&__prev-button {
+		transform: scaleX(-1);
 	}
 }
 

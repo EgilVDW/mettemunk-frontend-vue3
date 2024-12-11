@@ -94,11 +94,11 @@
 		opacity: 1;
 	}
 
-	a a.nuxt-link-exact-active {
+	a a.router-link-exact-active {
 		position: relative;
 	}
 
-	a.nuxt-link-exact-active:before {
+	a.router-link-exact-active:before {
 		transform: scaleX(1);
 	}
 }

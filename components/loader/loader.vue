@@ -1,18 +1,21 @@
 <template>
-    <div class="app-backdrop">
+    <div class="app-backdrop" :class="{'is-hidden': isHidden}">
         <div class="app-backdrop__logo">
-            <IconLogo />
+            <nuxt-icon name="icon-logo-border" filled/>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import IconLogo from "~/assets/icons/icon-logo-border.svg";
 
 defineProps({
     args: {
         type: Boolean,
         default: true,
     },
+    isHidden: {
+        type: Boolean,
+        default: true,
+    }
 });
 </script>

@@ -6,7 +6,9 @@
   >
     <!-- Image -->
     <div class="seventy-block__image col-md-9 col-12">
-      <slot :name="'seventy-thirty-mobile-' + data.title"></slot>
+      <h2 v-if="data.title && isMobile" class="h2 h2--light c-mb-l c-mt-reset">
+        {{ data.title }}
+      </h2>
       <DatocmsImage v-if="data.image" :data="data.image.responsiveImage" layout="responsive" />
     </div>
 
@@ -14,11 +16,10 @@
     <div
       class="seventy-block__content col-md-3 col-12 flex-horizontal-center flex-vertical-direction"
     >
-      <Teleport :to="'seventy-thirty-mobile-' + data.title" :disabled="!isMobile">
-        <h2 v-if="data.title" class="h2 h2--light c-mb-l c-mt-reset">
-          {{ data.title }}
-        </h2>
-      </Teleport>
+    
+      <h2 v-if="data.title && !isMobile" class="h2 h2--light c-mb-l c-mt-reset">
+        {{ data.title }}
+      </h2>
       <p
         v-if="data.description"
         class="text-default text-default--light c-mt-reset c-mb-xl"

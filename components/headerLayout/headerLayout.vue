@@ -91,9 +91,16 @@ onMounted(() => {
 });
 
 const setMenuTheme = () => {
-  setTimeout(() => {
-    // All dark themed pages has a banner and light theme has none
-    const el = document.querySelector(".banner") as HTMLElement;
+  const loops = [100, 200, 300, 400 ,500, 600, 700, 800, 900];
+  loops.forEach(x => {
+    setTimeout(() => {
+      setLayoutStyling();
+    }, x);
+  })
+};
+
+const setLayoutStyling = () => {
+  const el = document.querySelector(".banner") as HTMLElement;
     if (el) {
       styleBackground.value = "is-dark-theme";
       const isArticlePage = document.querySelector(
@@ -106,8 +113,7 @@ const setMenuTheme = () => {
       activeBackground.value = true;
       styleBackground.value = "is-light-theme";
     }
-  }, 500);
-};
+}
 
 const onScroll = () => {
   // Set active background when scrolling

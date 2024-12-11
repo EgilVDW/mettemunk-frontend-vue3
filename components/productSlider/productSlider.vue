@@ -1,9 +1,9 @@
 <template>
 	<div class="product-slider col-lg-7">
 		<div class="product-slider__image-section c-mb-l">
-			<Hooper group="group1">
+			<Hooper ref="mainHooperSlider" group="group1">
 				<Slide v-for="(item, index) in data" :key="index" class="product-slider__image">
-					<DatocmsImage v-if="item.responsiveImage" :data="item.responsiveImage" />
+					<DatocmsImage v-if="item.responsiveImage" :data="item.responsiveImage" layout="responsive" />
 
 					<!-- Rerender video component to reset video when sliding on/off -->
 					<LazyMuxVideo
@@ -16,11 +16,14 @@
 		</div>
 
 		<div class="product-slider__thumb-section">
+			<button @click="prevSlide" class="product-slider__prev-button">
+				<nuxt-icon class="product-slider__navigation-arrow" name="icon-arrow" />
+			</button>
 			<Hooper ref="hooperNavigation" group="group1" :items-to-show="4" @slide="setCurrentSlide">
 					<Slide  v-for="(item, index) in data" :key="index" class="product-slider__thumb-image">
 						<!-- Image thumbnail -->
-						<button v-if="item.responsiveImage" @click="setSlide(index)">
-							<DatocmsImage v-if="item.responsiveImage" class="product-slider__thumb-wrapper" :data="item.responsiveImage" />
+						<button class="product-slider__thumb-wrapper" v-if="item.responsiveImage" @click="setSlide(index)">
+							<DatocmsImage v-if="item.responsiveImage"  layout="responsive" :data="item.responsiveImage" />
 						</button>
 
 						<!-- Video thumbnail -->
@@ -31,18 +34,16 @@
 							</div>
 						</button>
 					</Slide>
-
 				<HooperPagination slot="hooper-addons" class="product-slider__pagination flex-center-center" />
-				<HooperNavigation slot="hooper-addons" class="product-slider__navigation">
-					<nuxt-icon slot="hooper-prev" class="product-slider__navigation-arrow" name="icon-arrow" />
-					<nuxt-icon slot="hooper-next" class="product-slider__navigation-arrow" name="icon-arrow" />
-				</HooperNavigation>
 			</Hooper>
+			<button @click="nextSlide" class="product-slider__next-button">
+				<nuxt-icon class="product-slider__navigation-arrow" name="icon-arrow" />
+			</button>
 		</div>
 	</div>
 </template>
 <script setup lang="ts">
-import { Hooper, Slide, Navigation as HooperNavigation, Pagination as HooperPagination } from '@wattanx/hooper-vue3';
+import { Hooper, Slide, Navigation, Pagination as HooperPagination } from '@wattanx/hooper-vue3';
 import '@wattanx/hooper-vue3/css';
 import type { IImage } from "~/interfaces/ui";
 
@@ -55,9 +56,28 @@ defineProps({
 
 const currentSlide = ref(0);
 const hooperNavigation = ref();
+const mainHooperSlider = ref();
 
 const setSlide = (id: number) => {
 	hooperNavigation.value.slideTo(id);
+	mainHooperSlider.value.slideTo(id);
+};
+
+const nextSlide = (id: number) => {
+	if(hooperNavigation.value.currentSlide < hooperNavigation.value.slidesCount - 1) {
+
+		mainHooperSlider.value.slideTo(hooperNavigation.value.currentSlide + 1);
+		hooperNavigation.value.slideTo(hooperNavigation.value.currentSlide + 1);
+	}
+	// mainHooperSlider.value.slideTo(hooperNavigation.value.data.currentSlide	+ 1);
+};
+
+const prevSlide = (id: number) => {
+	if(hooperNavigation.value.currentSlide > 0) {
+		mainHooperSlider.value.slideTo(hooperNavigation.value.currentSlide - 1);
+		hooperNavigation.value.slideTo(hooperNavigation.value.currentSlide - 1);
+	}
+	// mainHooperSlider.value.slideTo(hooperNavigation.value.data.currentSlide	+ 1);
 };
 
 const setCurrentSlide = (e: { currentSlide: number }) => {
