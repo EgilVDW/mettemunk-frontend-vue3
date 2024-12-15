@@ -1,6 +1,6 @@
 <template>
 	<div class="product-anchor col-lg-5 half-col flex flex-vertical-direction flex-horizontal-center">
-		<Portal to="product-text" :disabled="isLargeScreen">
+		<div>
 			<div class="col">
 				<h1 class="h2 product-anchor__title c-mt-reset c-mb-l">{{ data.title }}</h1>
 				<CustomStructuredText
@@ -10,8 +10,8 @@
 					:unique-key="data.title + 'productAnchor'"
 				/>
 			</div>
-		</Portal>
-		<div class="product-anchor__links-wrapper">
+		</div>
+		<div v-if="isLargeScreen" class="product-anchor__links-wrapper">
 			<a
 				v-if="data.document"
 				:href="data.document.url"

@@ -8,7 +8,7 @@ $gap: spacing(component, s);
 
 .hooper {
 	height: unset !important;
-	width: calc(100% + 2 * #{$gap}) ;
+	width: 100%;
 	margin: -$gap;
 	margin-top: 0;
 	margin-bottom: 0;
