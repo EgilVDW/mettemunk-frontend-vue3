@@ -13,6 +13,7 @@ import type {
   ICmsProductPage,
   ICmsNotFoundPage,
 } from "~/interfaces/cms/cmsPages";
+import type { RuntimeConfig } from "nuxt/schema";
 
 let allPages: ICmsBasicPage[] | null = null;
 

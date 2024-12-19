@@ -2,6 +2,7 @@ import type { IBasePage } from "~/interfaces/pages";
 import type { IHead } from "~/interfaces/global";
 
 export function generateHead(url: string, page: IBasePage | null): IHead {
+  const config = useRuntimeConfig();
   if (page == null) {
     return {};
   }
@@ -71,10 +72,10 @@ export function generateHead(url: string, page: IBasePage | null): IHead {
 
     url = url.substring(1);
 
-    if (process.env.CULTURE === "da") {
-      url = process.env.DANISH_BASEURL + "/" + url;
+    if (config.public.CULTURE === "da") {
+      url = config.public.DANISH_BASEURL + "/" + url;
     } else {
-      url = process.env.ENGLISH_BASEURL + "/" + url;
+      url = config.public.ENGLISH_BASEURL + "/" + url;
     }
 
     if (url.slice(-1) !== "/") {
